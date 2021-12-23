@@ -9,30 +9,47 @@
   </head>
   <body>
     <div class="wrapper">
-      <nav class="navbar">
-        <ul class="left">
-          <li>Portfolio</li>
-        </ul>
+      <div class="nav-container">
+        <nav class="navbar">
+          <ul class="left">
+            <li>Portfolio</li>
+          </ul>
+          <img
+            id="menu"
+            class="navbar-menu"
+            src="img/menu.svg"
+            alt="menu picture"
+          />
 
-        <ul class="right">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="">Blog</a>
-          </li>
-          <li>
-            <a href="#">Service</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-        </ul>
-      </nav>
+          <div class="top">
+            <img
+              id="exit"
+              class="mobile-exit"
+              src="img/exit.svg"
+              alt="exit menu"
+              class="menu-close"
+            />
 
+            <ul class="right">
+              <li>
+                <a href=".">Home</a>
+              </li>
+              <li>
+                <a href="blog.html">Blog</a>
+              </li>
+              <li>
+                <a href="#">Service</a>
+              </li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
       <br />
       <main>
         <section class="landing-page">
@@ -82,14 +99,15 @@
 
         <!-- About me frame -->
 
-        <section class="about-me">
+        <section id="about">
           <h1 class="title">ABOUT ME</h1>
           <div class="container">
             <div>
-              <h1>PERSONAL</h1>
+              <h3>Hi! Iam Ngabonziza Nestor</h3>
+              <p>I am fullstack web developer based in Kigali Rwanda.</p>
               <p>
-                I am personally self driven witha big<br />
-                passion in web development
+                I am goal oriented programmer with years of experience in web
+                <br />
               </p>
             </div>
             <div>
@@ -109,8 +127,11 @@
             </div>
           </div>
         </section>
-        <section class="contact">
-          <h1>CONTACT ME</h1>
+        <!-- CONTACT ME SECTION -->
+        <!-- ************************** -->
+
+        <section id="contact">
+          <h2>CONTACT ME</h2>
           <form action="#" method="post">
             <label for="#">Name*</label>
             <input type="text" />
@@ -130,8 +151,25 @@
           </form>
           <hr />
         </section>
+        <section id="service">
+          <h1>Service</h1>
+          <div class="services"></div>
+        </section>
         <footer>Copyright &copy 2021, Nestor-brand</footer>
       </main>
     </div>
+    <script>
+      const mobileBtn = document.getElementById("menu");
+      nav = document.querySelector(".top");
+      mobileBtnExit = document.getElementById("exit");
+
+      mobileBtn.addEventListener("click", () => {
+        nav.classList.add("menu-btn");
+      });
+
+      mobileBtnExit.addEventListener("click", () => {
+        nav.classList.remove("menu-btn");
+      });
+    </script>
   </body>
 </html>
