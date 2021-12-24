@@ -10,9 +10,7 @@
 <body>
     <div class="nav-container">
         <nav class="navbar">
-          <ul class="left">
-            <li>Portfolio</li>
-          </ul>
+          <span class="n">NN</span>  <span class="left">ESTA</span>
           <img
             id="menu"
             class="navbar-menu"
@@ -31,19 +29,19 @@
 
             <ul class="right">
               <li>
-                <a href=".">Home</a>
+                <a href="./#home">Home</a>
               </li>
               <li>
-                <a href="blog.html">Blog</a>
+                <a href="./blog.html">Blog</a>
               </li>
               <li>
-                <a href="#">Service</a>
+                <a href="./#portfolio">Portfolio</a>
               </li>
               <li>
-                <a href="#about">About</a>
+                <a href="./#about">About</a>
               </li>
               <li>
-                <a href="#contact">Contact</a>
+                <a href="./#contact">Contact</a>
               </li>
             </ul>
           </div>
@@ -69,7 +67,9 @@
     Java is a class-based programming language designed for fast execution and type safety. Type safety means, for instance, that you can't cast a Java integer into an object reference or access private memory by corrupting Java bytecodes. Java's class-based model means that programs consist exclusively of classes and their methods. Java's class inheritance and strong typing generally require tightly coupled object hierarchies. These requirements make Java programming more complex than JavaScript</p>
       
       <div class="comment-section">
+         
           <div class="your-comment">
+               <h2>Your comment</h2>
             <form action="#" method="post">
                 <label for="">Name:</label>
                 <input type="text" name="" id="">
@@ -77,15 +77,36 @@
                 <input type="email" name="" id="">
                 <label for="">Comment</label>
                 <textarea name="" id="" cols="30" rows="10"></textarea>
-                <input type="submit" value="Comment">
 
             </form>
+            <button>Comment</button>
           </div>
           <div class="others-comment">
+<h2>What others are saying about this article</h2>
+<div class="comment-1">
+    <h4>John Mark</h4>
+    <span class="date">01/12/2021</span>
+    <p>Nice course look to get more Keep it up</p>
 
+</div>
+<div class="comment-1">
+    <h4>Erick Doe</h4>
+    <span class="date">05/12/2021</span>
+    <p>Nice course look to get more Keep it up</p>
+
+</div>
+<div class="comment-1">
+    <h4>Peter Simon</h4>
+    <span class="date">04/12/2021</span>
+    <p>Nice course look to get more Keep it up</p>
+
+</div>
           </div>
       </div>
+      
     </div>
+    <hr />
+        <footer>Copyright &copy 2021, Nestor-brand</footer>
       <script>
         const mobileBtn = document.getElementById("menu");
         nav = document.querySelector(".top");

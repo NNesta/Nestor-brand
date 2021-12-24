@@ -9,11 +9,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="nav-container">
+     
         <nav class="navbar">
-          <ul class="left">
-            <li>Portfolio</li>
-          </ul>
+        
+        <span class="n">NN</span>  <span class="left">ESTA</span>
+   
           <img
             id="menu"
             class="navbar-menu"
@@ -34,26 +34,28 @@
               <li>
                 <a href=".">Home</a>
               </li>
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
-              <li>
-                <a href="#">Service</a>
-              </li>
+              
+              
               <li>
                 <a href="#about">About</a>
+              </li><li>
+                <a href="#portfolio">Portfolio</a>
               </li>
               <li>
                 <a href="#contact">Contact</a>
               </li>
+              
+              <li>
+                <a href="blog.html">Blog</a>
+              </li>
             </ul>
           </div>
         </nav>
-      </div>
+      
       <br />
       <main>
         <section class="landing-page">
-          <section class="desc">
+          <section id="description" class="desc">
             <h3>Your partner for software problem</h3>
             <h2 id="hi">Hi There, I am</h2>
             <h1>Nestor Ngabonziza</h1>
@@ -72,11 +74,11 @@
                   src="img/github.png"
                   alt="github picture"
               /></a>
-              <a href="#"
+              <a href=""
                 ><img
                   class="social-img"
-                  src="img/whatsapp.png"
-                  alt="whatsapp picture"
+                  src="img/faceboo.png"
+                  alt="Facebook picture"
               /></a>
               <a href="#"
                 ><img
@@ -92,8 +94,8 @@
               /></a>
             </div>
           </section>
-          <section>
-            <img src="img/PASSPORT.jpg" alt="Profile photo" />
+          <section id="profile">
+            <img  src="img/PASSPORT.jpg" alt="Profile photo" />
           </section>
         </section>
 
@@ -102,30 +104,99 @@
         <section id="about">
           <h1 class="title">ABOUT ME</h1>
           <div class="container">
-            <div>
-              <h3>Hi! Iam Ngabonziza Nestor</h3>
-              <p>I am fullstack web developer based in Kigali Rwanda.</p>
+            <div class="description">
+              <h1>Hi! Iam Ngabonziza Nestor</h1>
               <p>
-                I am goal oriented programmer with years of experience in web
-                <br />
+                I'm an experienced fullstack web developer who constantly seeks
+                out innovative solutions to everyday problems. In my two years
+                in this industry, I've honed my analytical thinking and
+                collaboration skills, and I love working with a team. I've also
+                had the opportunity to serve as the software engineer lead for
+                three projects with First Technology
               </p>
+              <button>Download my CV</button>
             </div>
-            <div>
-              <h1>EXPERIENCE</h1>
-              <ul>
-                <li>ATLP 9 month bootcamp</li>
-                <li>freecode camp</li>
-              </ul>
-            </div>
+
             <div>
               <h1>SKILLS</h1>
-              <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JAVASCRIPT</li>
+              <ul class="skills">
+                <li>
+                  <label for="file">HTML:</label>
+                  <progress class="progress" id="file" value="80" max="100">
+                    80%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">Javascript:</label>
+                  <progress class="progress" id="file" value="90" max="100">
+                    90%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">CSS:</label>
+                  <progress class="progress" id="file" value="80" max="100">
+                    80%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">PYTHON:</label>
+                  <progress class="progress" id="file" value="95" max="100">
+                    95%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">JAVA:</label>
+                  <progress class="progress" id="file" value="70" max="100">
+                    70%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">REACT:</label>
+                  <progress class="progress" id="file" value="65" max="100">
+                    65%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">REDUX:</label>
+                  <progress class="progress" id="file" value="55" max="100">
+                    55%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">REDUX:</label>
+                  <progress class="progress" id="file" value="55" max="100">
+                    55%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">REDUX:</label>
+                  <progress class="progress" id="file" value="55" max="100">
+                    55%
+                  </progress>
+                </li>
+                <li>
+                  <label for="file">REDUX:</label>
+                  <progress class="progress" id="file" value="55" max="100">
+                    55%
+                  </progress>
+                </li>
+
+                <button>View my Github</button>
               </ul>
+           
             </div>
           </div>
+        </section>
+        <!-- portfolio -->
+        <section id="portfolio">
+          <h1>Previous work sample</h1>
+          <div class="portfolios-list">
+<a href="#"><img class="portfolio-pic" src="img/first.jpg" alt=""></a>
+<a href="#"><img class="portfolio-pic" src="img/second.jpg" alt=""></a>
+<a href="#"><img class="portfolio-pic" src="img/third.webp" alt=""></a>
+<a href="#"><img class="portfolio-pic" src="img/fourth.jpg" alt=""></a>
+          </div>
+
         </section>
         <!-- CONTACT ME SECTION -->
         <!-- ************************** -->
@@ -149,12 +220,10 @@
             <br />
             <input type="submit" value="Send Message" />
           </form>
-          <hr />
+          
         </section>
-        <section id="service">
-          <h1>Service</h1>
-          <div class="services"></div>
-        </section>
+        
+        <hr />
         <footer>Copyright &copy 2021, Nestor-brand</footer>
       </main>
     </div>
