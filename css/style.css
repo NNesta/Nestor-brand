@@ -5,7 +5,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 main {
-  margin: 0rem 0rem;
+  margin: 0rem 0.5rem;
   
 }
 :root {
@@ -21,26 +21,27 @@ main {
   display: flex;
   place-content: space-between;
     z-index: 800;
+    
 }
 .left {
   color:#000080;
-  font-style:poppins;
   font-size: 1.7rem;
   font-weight: bolder;
   font-style: italic;
+  margin-left: 0;
 }
 .n {                 
   transform: scale(-1, 1);
   color: red;
-  -moz-transform: scale(-1, 1);
-  -webkit-transform: scale(-1, 1);
-  -o-transform: scale(-1, 1);
-  -ms-transform: scale(-1, 1);
-  transform: scale(-1, 1);
+  
   font-size: 1.7rem;
   font-weight: bolder;
-  margin-left: 3rem;
-  font-style: italic;
+  margin-left: 2rem;
+  margin-right: 0;
+  
+}
+.logo {
+  display: flex;
 }
 .top {
   position: fixed;
@@ -89,7 +90,7 @@ main {
   height: 2rem;
   padding: 0;
 }
-img {
+.profile {
   /* display: none; */
   height: 20rem;
   width: 20rem;
@@ -174,7 +175,8 @@ img {
 #about {
   background-color: #20272e;
   color: white;
-  padding: 1rem 0rem;
+  padding-top: 2.2rem;
+
  
 }
 
@@ -193,14 +195,17 @@ img {
   margin-bottom: 1.5rem;
   
 }
+.skills {
+  margin-left: 0;
+}
 .container div {
  flex: 1;
  margin:0 4rem;
  font-size: 1.5rem;
 }
 .container div h1 {
-  font-size: 1.8;
-  margin-left: 2rem;
+  font-size: 1.5rem;
+  margin-left: 0rem;
   font-weight: bold;
 }
 .description button {
@@ -223,9 +228,9 @@ img {
   background-color: rgb(255, 102, 0);
   border-radius: 3px;
   box-shadow: 0 1px 3px blue;
-  margin: 15px;
-  height: 30px;
-  width: 300px;
+  margin: 0rem;
+  height: 1.5rem;
+  width: 17rem;
   max-width: 100%;
   background: blue;
   /* margin-left: auto; */
@@ -239,8 +244,11 @@ img {
 /*contact  */
 
 #contact h2 {
-  margin: 2rem 0 2em 5em;
+  /* margin: 2rem 0 2em 5em; */
+  margin: 0;
+  padding-top: 2rem;
 }
+
 label {
   display: block;
   font-size: 1.2em;
@@ -321,9 +329,10 @@ button {
   align-items: center;
 }
 .main-img {
-  width: 250px;
-  height: 250px;
+  width: 269px;
+  height: 180px;
   padding: 0;
+  border-radius: 0;
 }
 .blogs {
   display: flex;
@@ -347,11 +356,12 @@ body {
 
 .admin-login {
   display: block;
-  margin: 5rem 0 0 20rem;
+  margin: 5rem 0 11rem 25rem;
 }
 .admin-login h2 {
   color: blue;
   margin-left: 4rem;
+
 }
 .login-button {
   background-color: blue;
@@ -364,18 +374,28 @@ button {
   height: 3rem;
   font-size: 1.5rem;
 }
+.psw,.email-user {
+  width: 18rem;
+  border-radius: 5rem;
+  
+}
+
 /* end */
 /* dashboard */
 .article-create-button {
   background: blue;
   color: white;
-  width: 15rem;
-  justify-content: center;
-  align-items: center;
+  width: 14rem;
   padding-top: 0.5rem;
-  height: 3rem;
+  height: 2.3rem;
+  padding-bottom: 2.3rem;
   text-decoration: none;
-  border-radius: 5rem;
+  border-radius: 2rem;
+}
+.logout {
+  background: #800000;
+  width: 7rem;
+  height: 2.3rem;
 }
 .create-button {
   font-size: 1rem;
@@ -390,7 +410,7 @@ aside {
 }
 .dashboard nav {
   margin-top: -5rem;
-  height: 3.5rem;
+  height: 2.7rem;
 }
 button {
   border-style: none;
@@ -469,10 +489,10 @@ a{
 }
 .component textarea,
 .component input {
-  margin-right: 5rem;
+  margin-right: 2rem;
 }
 .create-button {
-  margin: 2rem 0 0 45rem;
+  margin: 2rem 0 0 56rem;
   width: 10rem;
   height: 2.5rem;
   font-weight: bold;
@@ -485,7 +505,8 @@ a{
 /* article page*/
 
 .article-detail {
-  margin: 1rem;
+  margin: 5rem;
+  background: white;
 }
 
 .article-detail h3 {
@@ -495,13 +516,19 @@ a{
   left: 3rem;
   z-index: 1;
   font-size: 1.5rem;
-
 }
-
+.article-img-main {
+  width: 100%;
+  height: 20rem;
+  border-radius: .5rem;
+}
 /* end of article page */
 
 
 /* portfolio */
+#portfolio {
+  padding-top: 1.2rem;
+}
 .portfolios-list {
   display: flex;
   flex-wrap: wrap;
@@ -515,7 +542,7 @@ a{
 } 
 #portfolio h1 {
   transform: translate(35%);
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: blue;
 }
 
@@ -527,14 +554,21 @@ footer {
 }
 
 /* media query */
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 320px) {
+  :root{
+    font-size: 15px;
+    }
+    
+  }
+@media only screen and (min-width: 1025px) {
   :root {
     font-size: 20px;
   }
   main {
-    margin: 5rem 3rem;
+    margin: 0rem 3rem;
     --primary-color: blue;
-  }img {
+  }
+  .profile {
     height: 20rem;
     width: 20rem;
     float: left;
@@ -549,6 +583,9 @@ footer {
     margin: 2.5rem 0rem 6rem 0rem;
    
 
+  }
+  .current{
+ color: blue;
   }
   #profile{
     order: 2;
@@ -625,5 +662,15 @@ textarea {
   margin: 0 auto;
   padding: 0 auto;
 }
+
+
+/* @media only screen and (min-width: 100px) {
+  :root{
+    font-size: 5px;
+    }
+    body {
+      background: #800000;
+    }
+  } */
 /* end media query */
 

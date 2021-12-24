@@ -11,9 +11,9 @@
     <div class="wrapper">
      
         <nav class="navbar">
-        
+<div class="logo">
         <span class="n">NN</span>  <span class="left">ESTA</span>
-   
+   </div>
           <img
             id="menu"
             class="navbar-menu"
@@ -95,7 +95,7 @@
             </div>
           </section>
           <section id="profile">
-            <img  src="img/PASSPORT.jpg" alt="Profile photo" />
+            <img class="profile" src="img/PASSPORT.jpg" alt="Profile photo" />
           </section>
         </section>
 
@@ -152,36 +152,36 @@
                 </li>
                 <li>
                   <label for="file">REACT:</label>
-                  <progress class="progress" id="file" value="65" max="100">
-                    65%
+                  <progress class="progress" id="file" value="75" max="100">
+                    75%
                   </progress>
                 </li>
                 <li>
                   <label for="file">REDUX:</label>
-                  <progress class="progress" id="file" value="55" max="100">
-                    55%
+                  <progress class="progress" id="file" value="85" max="100">
+                    85%
                   </progress>
                 </li>
                 <li>
-                  <label for="file">REDUX:</label>
-                  <progress class="progress" id="file" value="55" max="100">
-                    55%
+                  <label for="file">C++:</label>
+                  <progress class="progress" id="file" value="75" max="100">
+                    75%
                   </progress>
                 </li>
                 <li>
-                  <label for="file">REDUX:</label>
-                  <progress class="progress" id="file" value="55" max="100">
-                    55%
+                  <label for="file">C:</label>
+                  <progress class="progress" id="file" value="45" max="100">
+                    45%
                   </progress>
                 </li>
-                <li>
-                  <label for="file">REDUX:</label>
-                  <progress class="progress" id="file" value="55" max="100">
-                    55%
+                <!-- <li>
+                  <label for="file">Kotlin:</label>
+                  <progress class="progress" id="file" value="70" max="100">
+                    70%
                   </progress>
-                </li>
+                </li> -->
 
-                <button>View my Github</button>
+                <button type="button" onclick="location.href='https://github.com/NNesta'">View my Github</button>
               </ul>
            
             </div>
@@ -223,8 +223,7 @@
           
         </section>
         
-        <hr />
-        <footer>Copyright &copy 2021, Nestor-brand</footer>
+        
       </main>
     </div>
     <script>
@@ -239,6 +238,9 @@
       mobileBtnExit.addEventListener("click", () => {
         nav.classList.remove("menu-btn");
       });
+
     </script>
+    <hr />
+        <footer>Copyright &copy 2021, Nestor-brand</footer>
   </body>
 </html>
