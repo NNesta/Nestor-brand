@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog page</title>
+    <link href="./fontawesome-free-5.15.4-web/css/brands.css" rel="stylesheet">
+    <link href="./fontawesome-free-5.15.4-web/css/solid.css" rel="stylesheet">
+    <link href="./fontawesome-free-5.15.4-web/css/fontawesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -12,15 +15,15 @@
       <div class="nav-container">
         <nav class="navbar">
           <div class="logo">
-            <span class="n">NN</span>  <span class="left">ESTA</span>
-       </div>
+            <span class="n">NN</span> <span class="left">ESTA</span>
+          </div>
           <img
             id="menu"
             class="navbar-menu"
             src="img/menu.svg"
             alt="menu picture"
           />
-
+  
           <div class="top">
             <img
               id="exit"
@@ -29,176 +32,49 @@
               alt="exit menu"
               class="menu-close"
             />
-
+  
             <ul class="right">
               <li>
-                <a href="./#home">Home</a>
+                <a href=".">Home</a>
+              </li>
+  
+              <li>
+                <a href="#about">About</a>
               </li>
               <li>
-                <li>
-                <a href="./#about">About</a>
+                <a href="#portfolio">Portfolio</a>
               </li>
               <li>
-                <a href="#contact">Contact</a>
-              
+                <a  id="contact-on" href="#contact">Contact</a>
+              </li>
+  
               <li>
-                <a href="./#portfolio">Portfolio</a>
+                <a href="blog.html">Blog</a>
               </li>
-              </li>
-                <a href="#">Blog</a>
+              <li>
+                <a href="login.html">Login</a>
               </li>
             </ul>
           </div>
         </nav>
+  
       </div>
       <br />
       <main>
         <div class="blog-sect">
           <div class="search-blog">
-            <input type="search" name="search" id="search-input" />
-            <button>Search</button>
+            <input type="search" name="search" id="search-blog" />
+            <button type="button" id="search-blog-btn">Search</button>
+            <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+            <br>
+          <small></small>
           </div>
           <section class="blogs">
-            <div class="articles">
-              <a href="./article.html">
-              <article class="article">
-                <img class="main-img" src="img/introduction to.png" alt="" />
-                <h3>Introduction to Javascript</h3>
-                <p>
-                  JavaScript is a cross-platform,<br />
-                  object-oriented <span>More</span>
-                </p>
-                <div class="article-bottom">
-                  <img
-                    class="article-img"
-                    src="img/view.png"
-                    alt="views picture"
-                  />
-                  <span>1</span>
-                  <img
-                    class="article-img"
-                    src="img/comment (1).png"
-                    alt="comment "
-                  />
-                  <span>0</span>
-                </div>
-              </article></a>
-              <a href="./article.html">
-              <article class="article">
-                <img class="main-img" src="img/html1.jpg" alt="" />
-                <h3>Introduction to HTML</h3>
-                <p>
-                  JavaScript is a cross-platform,<br />
-                  object-oriented <span>More</span>
-                </p>
-                <div class="article-bottom">
-                  <img
-                    class="article-img"
-                    src="img/view.png"
-                    alt="views picture"
-                  />
-                  <span>1</span>
-                  <img
-                    class="article-img"
-                    src="img/comment (1).png"
-                    alt="comment "
-                  />
-                  <span>0</span>
-                </div>
-              </article>
-              <a href="./article.html">
-              <article class="article">
-                <img class="main-img" src="img/html2.png" alt="" />
-                <h3>Advanced Html</h3>
-                <p>
-                  JavaScript is a cross-platform,<br />
-                  object-oriented <span>More</span>
-                </p>
-                <div class="article-bottom">
-                  <img
-                    class="article-img"
-                    src="img/view.png"
-                    alt="views picture"
-                  />
-                  <span>1</span>
-                  <img
-                    class="article-img"
-                    src="img/comment (1).png"
-                    alt="comment "
-                  />
-                  <span>0</span>
-                </div>
-              </article></a>
-              <a href="./article.html">
-              <article class="article">
-                <img class="main-img" src="img/js2.jpg" alt="" />
-                <h3>Advanced Javascript</h3>
-                <p>
-                  JavaScript is a cross-platform,<br />
-                  object-oriented <span>More</span>
-                </p>
-                <div class="article-bottom">
-                  <img
-                    class="article-img"
-                    src="img/view.png"
-                    alt="views picture"
-                  />
-                  <span>1</span>
-                  <img
-                    class="article-img"
-                    src="img/comment (1).png"
-                    alt="comment "
-                  />
-                  <span>0</span>
-                </div>
-              </article></a>
-              <a href="./article.html">
-              <article class="article">
-                <img class="main-img" src="img/css1.jpg" alt="" />
-                <h3>Introduction to CSS</h3>
-                <p>
-                  JavaScript is a cross-platform,<br />
-                  object-oriented <span>More</span>
-                </p>
-                <div class="article-bottom">
-                  <img
-                    class="article-img"
-                    src="img/view.png"
-                    alt="views picture"
-                  />
-                  <span>1</span>
-                  <img
-                    class="article-img"
-                    src="img/comment (1).png"
-                    alt="comment "
-                  />
-                  <span>0</span>
-                </div>
-              </article></a>
-              <a href="./article.html">
-              <article class="article">
-                <img class="main-img" src="img/css2.jpg" alt="" />
-                <h3>CSS style</h3>
-                <p>
-                  JavaScript is a cross-platform,<br />
-                  object-oriented <span>More</span>
-                </p>
-                <div class="article-bottom">
-                  <img
-                    class="article-img"
-                    src="img/view.png"
-                    alt="views picture"
-                  />
-                  <span>1</span>
-                  <img
-                    class="article-img"
-                    src="img/comment (1).png"
-                    alt="comment "
-                  />
-                  <span>0</span>
-                </div>
-              </article></a>
-            </div>
+          <div class="articles">
+            
+          </div>
             
           </section>
         </div>
@@ -206,18 +82,6 @@
     </div>
     <hr />
         <footer>Copyright &copy 2021, Nestor-brand</footer>
-    <script>
-      const mobileBtn = document.getElementById("menu");
-      nav = document.querySelector(".top");
-      mobileBtnExit = document.getElementById("exit");
-
-      mobileBtn.addEventListener("click", () => {
-        nav.classList.add("menu-btn");
-      });
-
-      mobileBtnExit.addEventListener("click", () => {
-        nav.classList.remove("menu-btn");
-      });
-    </script>
+    <script type="module" src="./js/blog.js"></script>
   </body>
 </html>

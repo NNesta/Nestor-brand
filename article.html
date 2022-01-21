@@ -5,52 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction to javascript</title>
+    <link href="./fontawesome-free-5.15.4-web/css/brands.css" rel="stylesheet">
+    <link href="./fontawesome-free-5.15.4-web/css/solid.css" rel="stylesheet">
+    <link href="./fontawesome-free-5.15.4-web/css/fontawesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="nav-container">
-        <nav class="navbar">
-          <div class="logo">
-            <span class="n">NN</span>  <span class="left">ESTA</span>
-       </div>  
-               <img
-            id="menu"
-            class="navbar-menu"
-            src="img/menu.svg"
-            alt="menu picture"
-          />
+  <nav class="navbar">
+    <div class="logo">
+      <span class="n">NN</span> <span class="left">ESTA</span>
+    </div>
+    <img
+      id="menu"
+      class="navbar-menu"
+      src="img/menu.svg"
+      alt="menu picture"
+    />
 
-          <div class="top">
-            <img
-              id="exit"
-              class="mobile-exit"
-              src="img/exit.svg"
-              alt="exit menu"
-              class="menu-close"
-            />
+    <div class="top">
+      <img
+        id="exit"
+        class="mobile-exit"
+        src="img/exit.svg"
+        alt="exit menu"
+        class="menu-close"
+      />
 
-            <ul class="right">
-              <li>
-                <a href="./#home">Home</a>
-              </li> 
-              <li>
-                <a href="./#about">About</a>
-              </li>
-              <li>
-                <a href="./#portfolio">Portfolio</a>
-              </li>
-              
-              <li>
-                <a href="./#contact">Contact</a>
-                <li>
-                <a href="./blog.html">Blog</a>
-              </li>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
+      <ul class="right">
+        <li>
+          <a href=".">Home</a>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+        <li>
+          <a href="#portfolio">Portfolio</a>
+        </li>
+        <li>
+          <a  id="contact-on" href="#contact">Contact</a>
+        </li>
+
+        <li>
+          <a href="blog.html">Blog</a>
+        </li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <br />
       <div class="article-detail">
+        
         <img class="article-img-main" src="img/introduction to.png" alt="">
 <h3>Introduction to javascript</h3>
 <p>JavaScript is a cross-platform, object-oriented scripting language used to make webpages interactive (e.g., having complex animations, clickable buttons, popup menus, etc.).  There are also more advanced server side versions of JavaScript such as Node.js, which allow you to add more functionality to a website than downloading files (such as realtime collaboration between multiple computers). Inside a host environment (for example, a web browser), JavaScript can be connected to the objects of its environment to provide programmatic control over them.
@@ -69,21 +77,39 @@
     JavaScript is a very free-form language compared to Java. You do not have to declare all variables, classes, and methods. You do not have to be concerned with whether methods are public, private, or protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed.
     
     Java is a class-based programming language designed for fast execution and type safety. Type safety means, for instance, that you can't cast a Java integer into an object reference or access private memory by corrupting Java bytecodes. Java's class-based model means that programs consist exclusively of classes and their methods. Java's class inheritance and strong typing generally require tightly coupled object hierarchies. These requirements make Java programming more complex than JavaScript</p>
-      
+    <button class="like__btn">
+      <span id="icon"><i class="far fa-thumbs-up"></i></span>
+      <span id="count">0</span> Like
+   </button>
       <div class="comment-section">
          
           <div class="your-comment">
                <h2>Your comment</h2>
-            <form action="#" method="post">
+            <form id="form-contact" action="#" method="post">
+              <div class="form-control">
                 <label for="">Name:</label>
-                <input type="text" name="" id="">
+                <input type="text" name="" id="name">
+                <i class="fas fa-check-circle "></i>
+                <i class="fas fa-exclamation-circle "></i>
+                <br/>
+              <small>Put name</small></div>
+                <div class="form-control">
                 <label for="">Email</label>
-                <input type="email" name="" id="">
+                <input type="email" name="" id="email">
+                <i class="fas fa-check-circle "></i>
+                <i class="fas fa-exclamation-circle "></i>
+                <br/>
+              <small>Put name</small></div>
+                <div class="form-control">
                 <label for="">Comment</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-
+                <textarea name="" id="message" cols="30" rows="10"></textarea>
+              <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small>Put name</small></div>
+                <input type="submit" value="Comment">
             </form>
-            <button>Comment</button>
+            
           </div>
           <div class="others-comment">
 <h2>What others are saying about this article</h2>
@@ -110,19 +136,10 @@
       
     </div>
     <hr />
+    <script type="module" src="./js/article.js"></script>
+        <noscript>You need to enable JavaScript to view the full site.</noscript>
+       
         <footer>Copyright &copy 2021, Nestor-brand</footer>
-      <script>
-        const mobileBtn = document.getElementById("menu");
-        nav = document.querySelector(".top");
-        mobileBtnExit = document.getElementById("exit");
-  
-        mobileBtn.addEventListener("click", () => {
-          nav.classList.add("menu-btn");
-        });
-  
-        mobileBtnExit.addEventListener("click", () => {
-          nav.classList.remove("menu-btn");
-        });
-      </script>
+        
 </body>
 </html>

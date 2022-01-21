@@ -11,37 +11,61 @@
     <div class="create-article">
         <h2>UPDATE ARTICLE</h2>
         <div class="article-components">
-            <form action="#" method="post">
+            <form id="update-form" action="dashboard.html" method="get">
             <div class="article-title component">
                 <label>Title:</label>
-                <input type="text" name="" id="" value="Introduction to Javascript">
+                <input type="text" name="title" id="title" value="">
+                <i class="fas fa-check-circle "></i>
+                <i class="fas fa-exclamation-circle "></i>
+                <br/>
+              <small></small>
             </div>
             <div class="article-title component">
                 <label>Picture:</label>
-                <input type="file" name="" id="" value="img/">
+                <input type="file" name="picture" id="picture" value="">
+                <i class="fas fa-check-circle "></i>
+                <i class="fas fa-exclamation-circle "></i>
+                <br/>
+              <small></small>
             </div>
             <div class="author component">
                 <label>Author:</label>
-                <input type="text" name="" id="" value="Nestor Ngabonziza">
+                <input type="text" name="author" id="author" value="">
+                <i class="fas fa-check-circle "></i>
+                <i class="fas fa-exclamation-circle "></i>
+                <br/>
+              <small></small>
             </div>
             <div class="date-created component">
                 <label>Date created:</label>
-                <input type="datetime" name="" id="" value="21/12/2021">
+                <input type="datetime" name="created" id="created" value="">
+                <i class="fas fa-check-circle "></i>
+                <i class="fas fa-exclamation-circle "></i>
+                <br/>
+              <small></small>
             </div>
             <div class="full-article component">
                 <label>Article:</label>
-                <textarea name="" id="" cols="30" rows="10">JavaScript is a cross-platform, object-oriented scripting language used to make webpages interactive (e.g., having complex animations, clickable buttons, popup menus, etc.).  There are also more advanced server side versions of JavaScript such as Node.js, which allow you to add more functionality to a website than downloading files (such as realtime collaboration between multiple computers). Inside a host environment (for example, a web browser), JavaScript can be connected to the objects of its environment to provide programmatic control over them.
-
-                    JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of language elements such as operators, control structures, and statements. Core JavaScript can be extended for a variety of purposes by supplementing it with additional objects; for example:</textarea>
+                <textarea name="article" id="article" cols="30" rows="10"></textarea>
+                    <i class="fas fa-check-circle "></i>
+                    <i class="fas fa-exclamation-circle "></i>
+                    <br/>
+                  <small></small>
             </div>
             <div class="tags component">
                 <label>Tag:</label>
-                <input type="text" value="JavaScript">
+                <input id="tag" type="text" value="" name="tag">
+                <i class="fas fa-check-circle "></i>
+                <i class="fas fa-exclamation-circle "></i>
+                <br/>
+              <small></small>
             </div>
-            <button onclick="location.href='dashboard.html'" type="button" class="create-button">Update</button>
+            <input  type="submit" class="create-button" value="Update">
         </form>
         </div>
     </div>
-    
+    <script type="module" src="./js/update.js"></script>
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
+    <footer>Copyright &copy 2021, Nestor-brand</footer>
 </body>
 </html>

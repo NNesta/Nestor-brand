@@ -5,53 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nestor Brand</title>
+    <link href="./fontawesome-free-5.15.4-web/css/fontawesome.css" rel="stylesheet">
+  <link href="./fontawesome-free-5.15.4-web/css/brands.css" rel="stylesheet">
+  <link href="./fontawesome-free-5.15.4-web/css/solid.css" rel="stylesheet">
+  <link href="./fontawesome-free-5.15.4-web/css/fontawesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="wrapper">
-     
-        <nav class="navbar">
-<div class="logo">
-        <span class="n">NN</span>  <span class="left">ESTA</span>
-   </div>
+      <nav class="navbar">
+        <div class="logo">
+          <span class="n">NN</span> <span class="left">ESTA</span>
+        </div>
+        <img
+          id="menu"
+          class="navbar-menu"
+          src="img/menu.svg"
+          alt="menu picture"
+        />
+
+        <div class="top">
           <img
-            id="menu"
-            class="navbar-menu"
-            src="img/menu.svg"
-            alt="menu picture"
+            id="exit"
+            class="mobile-exit"
+            src="img/exit.svg"
+            alt="exit menu"
+            class="menu-close"
           />
 
-          <div class="top">
-            <img
-              id="exit"
-              class="mobile-exit"
-              src="img/exit.svg"
-              alt="exit menu"
-              class="menu-close"
-            />
+          <ul class="right">
+            <li>
+              <a href=".">Home</a>
+            </li>
 
-            <ul class="right">
-              <li>
-                <a href=".">Home</a>
-              </li>
-              
-              
-              <li>
-                <a href="#about">About</a>
-              </li><li>
-                <a href="#portfolio">Portfolio</a>
-              </li>
-              <li>
-                <a href="#contact">Contact</a>
-              </li>
-              
-              <li>
-                <a href="blog.html">Blog</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#portfolio">Portfolio</a>
+            </li>
+            <li>
+              <a  id="contact-on" href="#contact">Contact</a>
+            </li>
+
+            <li>
+              <a href="blog.html">Blog</a>
+            </li>
+            <li>
+              <a href="login.html">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
       <br />
       <main>
         <section class="landing-page">
@@ -64,8 +70,20 @@
               Web development is my passion
             </p>
             <div class="learn-hire">
-              <button onclick="location.href='#about'" type="button" id="learn-button">Learn More</button>
-              <button onclick="location.href='#contact'" type="button" id="hire-button">Hire me</button>
+              <button
+                onclick="location.href='#about'"
+                type="button"
+                id="learn-button"
+              >
+                Learn More
+              </button>
+              <button
+                onclick="location.href='#contact'"
+                type="button"
+                id="hire-button"
+              >
+                Hire me
+              </button>
             </div>
             <div class="social-media">
               <a href="#">
@@ -114,7 +132,7 @@
                 had the opportunity to serve as the software engineer lead for
                 three projects with First Technology
               </p>
-              <button>Download my CV</button>
+              <button class="cv button" id="button">Download my CV</button>
             </div>
 
             <div>
@@ -181,9 +199,14 @@
                   </progress>
                 </li> -->
 
-                <button type="button" onclick="location.href='https://github.com/NNesta'">View my Github</button>
+                <button
+                  class="gt button"
+                  type="button"
+                  onclick="location.href='https://github.com/NNesta'"
+                >
+                  View my Github
+                </button>
               </ul>
-           
             </div>
           </div>
         </section>
@@ -191,56 +214,69 @@
         <section id="portfolio">
           <h1>Previous work sample</h1>
           <div class="portfolios-list">
-<a href="#"><img class="portfolio-pic" src="img/first.jpg" alt=""></a>
-<a href="#"><img class="portfolio-pic" src="img/second.jpg" alt=""></a>
-<a href="#"><img class="portfolio-pic" src="img/third.webp" alt=""></a>
-<a href="#"><img class="portfolio-pic" src="img/fourth.jpg" alt=""></a>
+            <a href="#"
+              ><img class="portfolio-pic" src="img/first.jpg" alt=""
+            /></a>
+            <a href="#"
+              ><img class="portfolio-pic" src="img/second.jpg" alt=""
+            /></a>
+            <a href="#"
+              ><img class="portfolio-pic" src="img/third.webp" alt=""
+            /></a>
+            <a href="#"
+              ><img class="portfolio-pic" src="img/fourth.jpg" alt=""
+            /></a>
           </div>
-
         </section>
         <!-- CONTACT ME SECTION -->
         <!-- ************************** -->
 
         <section id="contact">
+          <div>
           <h2>CONTACT ME</h2>
-          <form action="#" method="post">
-            <label for="#">Name*</label>
-            <input type="text" />
+          <form id="form-contact" action="." method="get">
+            <div class="form-control" id="name-contact" >
+            <label for="#">Name</label>
+            <input type="text" id="input-name" name="name"/>
+            <i class="fas fa-check-circle success"></i>
+            <i class="fas fa-exclamation-circle fail"></i>
+            <br/>
+            <small>Put name</small>
+          </div>
             <br />
+            <div class="form-control " id="email-contact">
             <label for="#">Email</label>
-            <input type="email" name="" id="" />
+            <input type="email" id="input-email" name="email"/>
+            <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small></small></div>
             <br />
+            <div class="form-control" >
             <label for=""> Message</label>
             <textarea
               name="message"
-              id="message"
+              id="message-contact"
               cols="30"
               rows="10"
-            ></textarea>
+            >
+            </textarea>
+            <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small></small>
+          </div>
             <br />
-            <input type="submit" value="Send Message" />
+            <input id="form-submit" type="submit" value="Send Message" />
           </form>
-          
+        </div>
         </section>
-        
-        
       </main>
     </div>
-    <script>
-      const mobileBtn = document.getElementById("menu");
-      nav = document.querySelector(".top");
-      mobileBtnExit = document.getElementById("exit");
-
-      mobileBtn.addEventListener("click", () => {
-        nav.classList.add("menu-btn");
-      });
-
-      mobileBtnExit.addEventListener("click", () => {
-        nav.classList.remove("menu-btn");
-      });
-
-    </script>
+    <script type="module" src="./js/index.js"></script>
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
+   
     <hr />
-        <footer>Copyright &copy 2021, Nestor-brand</footer>
+    <footer>Copyright &copy 2021, Nestor-brand</footer>
   </body>
 </html>

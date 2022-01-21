@@ -5,42 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="./fontawesome-free-5.15.4-web/css/brands.css" rel="stylesheet">
+    <link href="./fontawesome-free-5.15.4-web/css/solid.css" rel="stylesheet">
+    <link href="./fontawesome-free-5.15.4-web/css/fontawesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="create-article">
         <h2>CREATE ARTICLE</h2>
         <div class="article-components">
-            <form action="dashboard.html" method="get">
+            <form id="create-form" action="dashboard.html" method="get">
             <div class="article-title component">
                 <label>Title:</label>
-                <input type="text" name="" id="">
+                <input id="title" type="text" name="name">
+                <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br>
+          <small></small>
+           <br>
             </div>
+            <br>
             <div class="picture component">
-                <label>article picture:</label>
-              <input type="file" name="" id="">
+                <label>picture:</label>
+              <input id="picture" type="file" name="picture">
+              <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small></small>
             </div>
             <div class="author component">
                 <label>Author:</label>
-                <input type="text" name="" id="">
+                <input type="text" name="author" id="author">
+                <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small></small>
             </div>
             <div class="date-created component">
-                <label>Date created:</label>
-                <input type="datetime" name="" id="">
+                <label>created:</label>
+                <input type="datetime" name="created" id="created">
+                <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small></small>
             </div>
             <div class="full-article component">
                 <label>Article:</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea name="article" id="article" cols="30" rows="10"></textarea>
+                <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small></small>
             </div>
             <div class="tags component">
                 <label>Tag:</label>
-                <input type="text" value="">
+                <input id="tag" type="text" value="" name="tag">
+                <i class="fas fa-check-circle "></i>
+            <i class="fas fa-exclamation-circle "></i>
+            <br/>
+          <small></small>
             </div>
-            <button class="create-button">Create Article</button>
+            <input id="create-btn" type="submit" value="Create Article">
         </form>
         </div>
     </div>
     <hr />
+    <script type="module" src="./js/create.js"></script>
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
         <footer>Copyright &copy 2021, Nestor-brand</footer>
 </body>
 </html>

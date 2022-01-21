@@ -1,0 +1,236 @@
+  <div class="articles">
+              <a href="./article.html">
+              <article class="article">
+                <img class="main-img" src="img/introduction to.png" alt="" />
+                <h3>Introduction to Javascript</h3>
+                <p>
+                  JavaScript is a cross-platform,<br />
+                  object-oriented <span>More</span>
+                </p>
+                <div class="article-bottom">
+                  <img
+                    class="article-img"
+                    src="img/view.png"
+                    alt="views picture"
+                  />
+                  <span>1</span>
+                  <img
+                    class="article-img"
+                    src="img/comment (1).png"
+                    alt="comment "
+                  />
+                  <span>0</span>
+                </div>
+              </article></a>
+              <a href="./article.html">
+              <article class="article">
+                <img class="main-img" src="img/html1.jpg" alt="" />
+                <h3>Introduction to HTML</h3>
+                <p>
+                  JavaScript is a cross-platform,<br />
+                  object-oriented <span>More</span>
+                </p>
+                <div class="article-bottom">
+                  <img
+                    class="article-img"
+                    src="img/view.png"
+                    alt="views picture"
+                  />
+                  <span>1</span>
+                  <img
+                    class="article-img"
+                    src="img/comment (1).png"
+                    alt="comment "
+                  />
+                  <span>0</span>
+                </div>
+              </article>
+              <a href="./article.html">
+              <article class="article">
+                <img class="main-img" src="img/html2.png" alt="" />
+                <h3>Advanced Html</h3>
+                <p>
+                  JavaScript is a cross-platform,<br />
+                  object-oriented <span>More</span>
+                </p>
+                <div class="article-bottom">
+                  <img
+                    class="article-img"
+                    src="img/view.png"
+                    alt="views picture"
+                  />
+                  <span>1</span>
+                  <img
+                    class="article-img"
+                    src="img/comment (1).png"
+                    alt="comment "
+                  />
+                  <span>0</span>
+                </div>
+              </article></a>
+              <a href="./article.html">
+              <article class="article">
+                <img class="main-img" src="img/js2.jpg" alt="" />
+                <h3>Advanced Javascript</h3>
+                <p>
+                  JavaScript is a cross-platform,<br />
+                  object-oriented <span>More</span>
+                </p>
+                <div class="article-bottom">
+                  <img
+                    class="article-img"
+                    src="img/view.png"
+                    alt="views picture"
+                  />
+                  <span>1</span>
+                  <img
+                    class="article-img"
+                    src="img/comment (1).png"
+                    alt="comment "
+                  />
+                  <span>0</span>
+                </div>
+              </article></a>
+              <a href="./article.html">
+              <article class="article">
+                <img class="main-img" src="img/css1.jpg" alt="" />
+                <h3>Introduction to CSS</h3>
+                <p>
+                  JavaScript is a cross-platform,<br />
+                  object-oriented <span>More</span>
+                </p>
+                <div class="article-bottom">
+                  <img
+                    class="article-img"
+                    src="img/view.png"
+                    alt="views picture"
+                  />
+                  <span>1</span>
+                  <img
+                    class="article-img"
+                    src="img/comment (1).png"
+                    alt="comment "
+                  />
+                  <span>0</span>
+                </div>
+              </article></a>
+              <a href="./article.html">
+              <article class="article">
+                <img class="main-img" src="img/css2.jpg" alt="" />
+                <h3>CSS style</h3>
+                <p>
+                  JavaScript is a cross-platform,<br />
+                  object-oriented <span>More</span>
+                </p>
+                <div class="article-bottom">
+                  <img
+                    class="article-img"
+                    src="img/view.png"
+                    alt="views picture"
+                  />
+                  <span>1</span>
+                  <img
+                    class="article-img"
+                    src="img/comment (1).png"
+                    alt="comment "
+                  />
+                  <span>0</span>
+                </div>
+              </article></a>
+            </div>
+
+
+
+
+                    <article>
+              <a href="#"><h2 class="article-title"> Introduction to Javascript</h2></a>
+              <span class="date-time">created:12/12/2021</span>
+              <span class="date-time">| Last Update: 15/12/2021</span>
+              <p>JavaScript and Java are similar in some ways but fundamentally different in some others. Th</p>
+              
+              <div class="article-bottom">
+                <img
+                  class="article-img"
+                  src="img/view.png"
+                  alt="views picture"
+                />
+                <span>1</span>
+                <img
+                  class="article-img"
+                  src="img/comment (1).png"
+                  alt="comment "
+                />
+                <span>0</span>
+                <button onclick="location.href='update.html'" type="button" class="article-update">Update</button>
+                <button class="article-delete">Delete</button>
+              </div>
+          </article>
+          <article>
+            <a href="#"><h2 class="article-title"> Introduction to Javascript</h2></a>
+            <span class="date-time">created:12/12/2021</span>
+              <span class="date-time">| Last Update: 15/12/2021</span>
+            <p>JavaScript and Java are similar in some ways but fundamentally different in some others. Th</p>
+            
+            <div class="article-bottom">
+              <img
+                class="article-img"
+                src="img/view.png"
+                alt="views picture"
+              />
+              <span>1</span>
+              <img
+                class="article-img"
+                src="img/comment (1).png"
+                alt="comment "
+              />
+              <span>0</span>
+              <button onclick="location.href='update.html'" type="button" class="article-update">Update</button>
+              <button class="article-delete">Delete</button>
+            </div>
+        </article>
+        <article>
+            <a href="#"><h2 class="article-title"> Introduction to Javascript</h2></a>
+            <span class="date-time">created:12/12/2021</span>
+              <span class="date-time">| Last Update: 15/12/2021</span>
+            <p>JavaScript and Java are similar in some ways but fundamentally different in some others. Th</p>
+            
+            <div class="article-bottom">
+              <img
+                class="article-img"
+                src="img/view.png"
+                alt="views picture"
+              />
+              <span>1</span>
+              <img
+                class="article-img"
+                src="img/comment (1).png"
+                alt="comment "
+              />
+              <span>0</span>
+              <button onclick="location.href='update.html'" type="button" class="article-update">Update</button>
+              <button class="article-delete">Delete</button>
+            </div>
+        </article>
+        <article>
+            <a href="#"><h2 class="article-title"> Introduction to Javascrip</h2></a>
+            <span class="date-time"> created:12/12/2021</span>
+              <span class="date-time">| Last Update: 15/12/2021</span>
+            <p>JavaScript and Java are similar in some ways but fundamentally different in some others. Th</p>
+            
+            <div class="article-bottom">
+              <img
+                class="article-img"
+                src="img/view.png"
+                alt="views picture"
+              />
+              <span>1</span>
+              <img
+                class="article-img"
+                src="img/comment (1).png"
+                alt="comment "
+              />
+              <span>0</span>
+              <button onclick="location.href='update.html'" type="button" class="article-update">Update</button>
+              <button class="article-delete">Delete</button>
+            </div>
+        </article>
