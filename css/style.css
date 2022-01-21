@@ -13,7 +13,7 @@ main {
   --letter-color: black;
   --primary-color: #000080;
   --succes-color: green;
-  --fail-color: red;
+  --fail-color: rgb(180, 6, 6);
   --backround-color: #f2f2f2;
 }
 .navbar {
@@ -502,7 +502,7 @@ button {
 }
 .check-button a{
   color: var(--primary-color);
-  
+  margin-top: 1rem;
 
 }
 .article-update {
@@ -511,7 +511,7 @@ button {
 }
 .article-delete {
   height: 2rem;
-  background: red;
+  background: var(--fail-color);
   margin-left: 2rem;
   margin-top: -0.3rem;
 }
@@ -615,7 +615,7 @@ footer {
   transform: translate(35%);
 }
 .error-message {
-  border-color: red;
+  border-color: var(--fail-color);
 }
 /* media query */
 @media only screen and (max-width: 320px) {
@@ -748,7 +748,7 @@ small{
 }
 .fail small {
   visibility: visible;
-  color: red;
+  color: var(--fail-color);
 }
 .success small {
   visibility: visible;
@@ -761,10 +761,10 @@ small{
 }
 .fail .fa-exclamation-circle {
   visibility: visible;
-  color: red;
+  color: var(--fail-color);
 }
 .fail input,.fail textarea {
-  border-color: red;
+  border-color: var(--fail-color);
   
  
 } 
@@ -794,7 +794,10 @@ url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
   border: none;
   cursor: pointer;
 }
-
+th, td {
+  padding: 15px;
+  text-align: left;
+}
 /* @media only screen and (min-width: 100px) {
   :root{
     font-size: 5px;
