@@ -16,8 +16,9 @@ createForm["picture"].addEventListener("change", function () {
 });
 
 createForm.addEventListener("submit", (e) => {
+  if(!createFormValidate()){
   e.preventDefault();
-  createFormValidate();
+  }
 
   
 });
@@ -102,7 +103,7 @@ function createFormValidate() {
   
     getSuccessMessage(articleTag, "Very good");
   }
- isValid = true && articleTitle.value && articlePicture.value && articleAuthor.value && articleArticle.value && articleCreated.value && articleTag.value;
+ isValid = (articleTitle.value && articlePicture.value && articleAuthor.value && articleArticle.value && articleCreated.value && articleTag.value);
 
  if (isValid) {
     storeArticle(
