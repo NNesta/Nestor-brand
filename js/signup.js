@@ -3,9 +3,9 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 const signUpForm = document.getElementById("signup-form1");
 const users = JSON.parse(localStorage.getItem("users")) || [];
 
-signUpForm.addEventListener("submit", (e) => {e.preventDefault();
+signUpForm.addEventListener("submit", (e) => {
   if (!checkCredential()) {
-    
+    e.preventDefault();
   }
 });
 

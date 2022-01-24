@@ -3,12 +3,17 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 const loginForm = document.getElementById("login-form1");
 const inputEmail = loginForm["email-user"];
 const inputpswd = loginForm["password"];
-const userArray = JSON.parse(localStorage.users)
+const users = localStorage.users || [];
+const userArray = JSON.parse(JSON.stringify(users));
+JSON.p
 
 loginForm.addEventListener("submit", (e) => {
-  if (!checkCredential()) {
+  if(!checkCredential()){
     e.preventDefault();
   }
+      
+  
+  
 });
 
 function checkCredential() {
@@ -16,16 +21,19 @@ function checkCredential() {
   if (!inputEmail.value.trim()) {
     getErrorMessage(inputEmail, "Invalid email");
   } else {
-    getSuccessMessage(inputEmail, "Very good");
+    getSuccessMessage(inputEmail, "");
   }
   if (!inputpswd.value.trim()) {
     getErrorMessage(inputpswd, "invalid password");
   } else {
-    getSuccessMessage(inputpswd, "very good");
+    getSuccessMessage(inputpswd, "");
 
   }
   if (inputEmail.value.trim() && inputpswd.value.trim()) {
     return getUser()
+  }
+  else {
+    return false;
   }
 
 }

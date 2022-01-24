@@ -14,7 +14,8 @@ searchButton.addEventListener("click", () => {
 articlePopulate();
 function articlePopulate() {
   const articleContainer = document.querySelector(".article-modify");
-  let articlesArray = JSON.parse(localStorage.articles);
+  const articles = localStorage.articles || []
+  let articlesArray = JSON.parse(JSON.stringify(articles)) ;
   for (let i = 0; i < articlesArray.length; i++) {
     let singleArticle = document.createElement("article");
     let link = document.createElement("a");
