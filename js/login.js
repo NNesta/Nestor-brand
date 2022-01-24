@@ -3,9 +3,13 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 const loginForm = document.getElementById("login-form1");
 const inputEmail = loginForm["email-user"];
 const inputpswd = loginForm["password"];
-const users = localStorage.users || [];
-const userArray = JSON.parse(JSON.stringify(users));
-JSON.p
+const users = localStorage.users;
+
+let userArray = []
+if(users){
+userArray = JSON.parse(users);
+}
+
 
 loginForm.addEventListener("submit", (e) => {
   if(!checkCredential()){
@@ -39,9 +43,10 @@ function checkCredential() {
 }
 function getUser() {
   for(let i=0;i<userArray.length;i++){
+    console.log(userArray[i].email)
     if(inputEmail.value.trim() === userArray[i].email){
       if(inputpswd.value.trim() === userArray[i].password){
-        localStorage.active = userArray[i].userId
+        localStorage.active = userArray[i].userId;
              return true;
       }
       else{

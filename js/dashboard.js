@@ -3,7 +3,11 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
 
-
+const articles = localStorage.articles;
+let articlesArray = []
+if(articles){
+  articlesArray = JSON.parse(articles) ;
+}
 searchButton.addEventListener("click", () => {
   if (!searchInput.value.trim()) {
     getErrorMessage(searchButton.parentElement, "Put valid search");
@@ -14,8 +18,7 @@ searchButton.addEventListener("click", () => {
 articlePopulate();
 function articlePopulate() {
   const articleContainer = document.querySelector(".article-modify");
-  const articles = localStorage.articles || []
-  let articlesArray = JSON.parse(JSON.stringify(articles)) ;
+  
   for (let i = 0; i < articlesArray.length; i++) {
     let singleArticle = document.createElement("article");
     let link = document.createElement("a");
@@ -32,7 +35,7 @@ function articlePopulate() {
     let img2 = document.createElement("img");
     let span1 = document.createElement("span");
     let span2 = document.createElement("span");
- 
+ console.log(articlesArray[i])
     title.innerText = articlesArray[i].title;
     article.innerText = articlesArray[i].article.slice(0,70);
     created.innerText = "Created: "+articlesArray[i].created;
