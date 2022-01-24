@@ -8,8 +8,9 @@ const article = articles[index];
 const userId = parseInt(localStorage.active);
 const users = JSON.parse(localStorage.users);
 commentForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  checkComment(commentForm);
+  if (!checkComment(commentForm)) {
+    e.preventDefault();
+  }
 });
 const articleDetail = document.querySelector(".article-detail1");
 const mainImage = document.createElement("img");
@@ -17,12 +18,11 @@ mainImage.src = article.picture;
 mainImage.className = "article-img-main";
 const title = document.createElement("h3");
 title.innerText = article.title;
-const body = document.createElement("p")
+const body = document.createElement("p");
 body.innerText = article.article;
 articleDetail.appendChild(mainImage);
 articleDetail.appendChild(title);
 articleDetail.appendChild(body);
-
 
 const likeBtn = document.querySelector(".like__btn");
 let likeIcon = document.querySelector("#icon"),
@@ -54,6 +54,7 @@ function checkComment(form) {
     return true;
   }
 }
+
 function getUser() {
   for (let i = 0; i < users.length; i++) {
     if (users[i].userId == userId) {
@@ -61,10 +62,10 @@ function getUser() {
     }
   }
 }
-const nameCommentor = getUser().firstname + " "+getUser().secondname;
+const nameCommentor = getUser().firstname + " " + getUser().secondname;
 function storeComment(message) {
   const comment = {
-    time:new Date().toLocaleString(),
+    time: new Date().toLocaleString(),
     name: nameCommentor,
     email: getUser().email,
     message: message,
@@ -81,17 +82,17 @@ const head1 = document.createElement("h2");
 const commentaire = document.createElement("p");
 head1.innerText = "What others are saying about this article";
 allComment.appendChild(head1);
-for(let i=0;i<comments.length;i++){
-const commentSection = document.createElement("div");
-commentSection.className = "comment-1"
-const commentor = document.createElement("h4");
-const date = document.createElement("span");
-date.className = "date"
-commentaire.innerText = comments[i].message;
-commentor.innerText =comments[i].name;
-date.innerText = comments[i].time;
-commentSection.appendChild(commentor);
-commentSection.appendChild(date);
-commentSection.appendChild(commentaire);
-allComment.appendChild(commentSection);
+for (let i = 0; i < comments.length; i++) {
+  const commentSection = document.createElement("div");
+  commentSection.className = "comment-1";
+  const commentor = document.createElement("h4");
+  const date = document.createElement("span");
+  date.className = "date";
+  commentaire.innerText = comments[i].message;
+  commentor.innerText = comments[i].name;
+  date.innerText = comments[i].time;
+  commentSection.appendChild(commentor);
+  commentSection.appendChild(date);
+  commentSection.appendChild(commentaire);
+  allComment.appendChild(commentSection);
 }

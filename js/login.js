@@ -12,7 +12,6 @@ loginForm.addEventListener("submit", (e) => {
 });
 
 function checkCredential() {
-  let isValid = false;
 
   if (!inputEmail.value.trim()) {
     getErrorMessage(inputEmail, "Invalid email");

@@ -808,6 +808,9 @@ color:black;
 margin-left:2rem;
 margin-right: .3rem;
 }
+.comp, .admin-login{
+  margin-top: 0;
+}
 /* @media only screen and (min-width: 100px) {
   :root{
     font-size: 5px;

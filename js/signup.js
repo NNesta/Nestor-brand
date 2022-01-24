@@ -17,19 +17,19 @@ function checkCredential() {
   const inputPswdCheck = signUpForm["password-check"];
   let isValid = false;
   if (!inputFirstName.value.trim()) {
-    getErrorMessage(inputFirstName, "Invalid email");
+    getErrorMessage(inputFirstName, "Invalid Name");
   } else {
-    getSuccessMessage(inputFirstName, "Very good");
+    getSuccessMessage(inputFirstName, "");
   }
   if (!inputSecondName.value.trim()) {
-    getErrorMessage(inputSecondName, "Invalid email");
+    getErrorMessage(inputSecondName, " Invalid Name");
   } else {
-    getSuccessMessage(inputSecondName, "Very good");
+    getSuccessMessage(inputSecondName, " ");
   }
   if (!inputEmail.value.trim()) {
-    getErrorMessage(inputEmail, "Invalid email");
+    getErrorMessage(inputEmail, " Invalid email");
   } else {
-    getSuccessMessage(inputEmail, "Very good");
+    getSuccessMessage(inputEmail, "");
   }
 
   if (!inputPswd.value.trim()) {
