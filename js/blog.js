@@ -32,7 +32,7 @@ function articlePopulate() {
     let description = document.createElement("p");
     let bottomPart = document.createElement("div");
     let img1 = document.createElement("i");
-    let img2 = document.createElement("img");
+    let img2 = document.createElement("i");
     let span1 = document.createElement("span");
     let span2 = document.createElement("span");
     image.className = "main-img";
@@ -43,11 +43,11 @@ function articlePopulate() {
     // img1.src = "img/view.png";
     
     img1.className = "fas fa-eye";
-    img2.src = "img/comment (1).png";
-    img2.className = "article-img";
-    link.href = "./article.html";
+    // img2.src = "img/comment (1).png";
+    img2.className = "fas fa-comment-alt";
+    link.href = "./article.html?id="+i;
     span1.innerText = 1;
-    span2.innerText = 0;
+    span2.innerText = articlesArray[i].comments.length;
 
     bottomPart.appendChild(img1);
     bottomPart.appendChild(span1);

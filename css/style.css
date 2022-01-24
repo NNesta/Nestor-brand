@@ -799,6 +799,15 @@ th, td {
   padding: 15px;
   text-align: left;
 }
+.fa-eye{
+  color: black;
+  margin-right: .3rem;
+}
+.fa-comment-alt  {
+color:black;
+margin-left:2rem;
+margin-right: .3rem;
+}
 /* @media only screen and (min-width: 100px) {
   :root{
     font-size: 5px;

@@ -1,5 +1,6 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 export { storeArticle };
+const now = new Date();
 
 const createForm = document.getElementById("create-form");
 let picture = "";
@@ -19,7 +20,7 @@ createForm.addEventListener("submit", (e) => {
   if(!createFormValidate()){
   e.preventDefault();
   }
-
+ 
   
 });
 // This function store the filled element into localstorage if all element have valid input
@@ -27,7 +28,6 @@ function storeArticle(
   title,
   picture,
   author,
-  created,
   articleDetail,
   tag,
   position = null
@@ -36,9 +36,12 @@ function storeArticle(
     title: title,
     picture: picture,
     author: author,
-    created: created,
+    created: now.toDateString(),
     article: articleDetail,
     tag: tag,
+    comments: [],
+    likes:0,
+    dislikes:0
   };
   
   articles = JSON.parse(localStorage.getItem("articles")) || [];
@@ -56,7 +59,6 @@ function createFormValidate() {
   const articleTitle = createForm["title"];
   const articlePicture = createForm["picture"];
   const articleAuthor = createForm["author"];
-  const articleCreated = createForm["created"];
   const articleArticle = createForm["article"];
   const articleTag = createForm["tag"];
   let isValid = false;
@@ -82,13 +84,7 @@ function createFormValidate() {
   
     getSuccessMessage(articleAuthor, "Very good");
   }
-  if (!articleCreated.value.trim()) {
-    
-    getErrorMessage(articleCreated, "Put valid title");
-  } else {
   
-    getSuccessMessage(articleCreated, "Very good");
-  }
   if (!articleArticle.value.trim()) {
     
     getErrorMessage(articleArticle, "Put valid title");
@@ -103,14 +99,14 @@ function createFormValidate() {
   
     getSuccessMessage(articleTag, "Very good");
   }
- isValid = (articleTitle.value && articlePicture.value && articleAuthor.value && articleArticle.value && articleCreated.value && articleTag.value);
+ isValid = (articleTitle.value && articlePicture.value && articleAuthor.value && articleArticle.value && articleTag.value);
 
  if (isValid) {
     storeArticle(
       articleTitle.value.trim(),
       picture,
       articleAuthor.value.trim(),
-      articleCreated.value.trim(),
+      
       articleArticle.value.trim(),
       articleTag.value.trim()
     );
