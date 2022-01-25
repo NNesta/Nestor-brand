@@ -76,7 +76,7 @@ function storeComment(message) {
   localStorage.articles = JSON.stringify(articles);
   console.log(articles[0].comments);
 }
-const comments = articles[0].comments;
+const comments = articles[index].comments;
 const allComment = document.querySelector(".others-comment");
 const head1 = document.createElement("h2");
 const commentaire = document.createElement("p");
