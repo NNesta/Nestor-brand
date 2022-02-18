@@ -13,12 +13,58 @@
     <title>login</title>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo">
+      <span class="n">NN</span> <span class="left">ESTA</span>
+    </div>
+    <img
+      id="menu"
+      class="navbar-menu"
+      src="img/menu.svg"
+      alt="menu picture"
+    />
+
+    <div class="top">
+      <img
+        id="exit"
+        class="mobile-exit"
+        src="img/exit.svg"
+        alt="exit menu"
+        class="menu-close"
+      />
+
+      <ul class="right">
+        <li>
+          <a href=".">Home</a>
+        </li>
+
+        <li>
+          <a href="http://127.0.0.1:5501/#about">About</a>
+        </li>
+        <li>
+          <a href="http://127.0.0.1:5501/#portfolio">Portfolio</a>
+        </li>
+        <li>
+          <a  id="contact-on" href="http://127.0.0.1:5501/#contact">Contact</a>
+        </li>
+
+        <li>
+          <a href="blog.html">Blog</a>
+        </li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
     <div class="admin-login">
+      
         <h2>USER LOG IN</h2>
         <form id="login-form1" action="dashboard.html" method="get">
             <div class="login-email">
             <label for=>Email:</label> 
-            <input class="email-user" type="email" name="email-user" id="login-email">
+            <input class="email-user-login" type="email" name="email-user" id="login-email">
             <i class="fas fa-check-circle "></i>
             <i class="fas fa-exclamation-circle "></i>
             <br/>
@@ -27,7 +73,7 @@
             <br>
             <div class="login-pswd">
             <label for="">Password:</label>
-            <input class="psw"  type="password" name="password" id="login-pswd">
+            <input class="psw-login"  type="password" name="password" id="login-pswd">
             <i class="fas fa-check-circle "></i>
             <i class="fas fa-exclamation-circle "></i>
             <br/>

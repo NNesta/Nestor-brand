@@ -1,25 +1,38 @@
 const url = window.location.href;
 const entity = url.split("&")[0].split("=")[1];
 const index = url.split("&")[1].split("=")[1];;
+const token = sessionStorage.token;
 
-if(entity == "article"){
-deleteArticle(parseInt(index));}
-if(entity == "user"){
-  deleteUser(parseInt(index))
-}
-function deleteArticle(index) {
-  let articles = [];
-  articles = JSON.parse(localStorage.articles);
-  articles.splice(index,1);
-  localStorage.setItem("articles",JSON.stringify(articles));
+const deleteArticle = async (index)=> {
+  
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", "Authorization":`Bearer ${token}` },
+  });
   window.location.href = "dashboard.html";
 }
 
-function deleteUser(index) {
-  let users = [];
-  users = JSON.parse(localStorage.users);
-  users.splice(index,1);
-  localStorage.setItem("users",JSON.stringify(users));
+const deleteUser= async (index) => {
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", "Authorization":`Bearer ${token}` },
+  });;
   window.location.href = "user.html";
 }
 
+const deleteQuery= async (index) => {
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/message/${index}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", "Authorization":`Bearer ${token}` },
+  });
+  window.location.href = "queries.html";
+}
+if(entity == "article"){
+deleteArticle(index);
+}
+if(entity == "user"){
+  deleteUser(index)
+}
+if(entity == "query"){
+  deleteQuery(index)
+}

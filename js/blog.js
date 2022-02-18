@@ -1,4 +1,9 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
+
+const articles = fetch('https://nestor-portifolio-api.herokuapp.com/api/article').then(response => response.json())
+
+console.log(articles.then(data=>console.log(data)))
+
 const mobileBtn = document.getElementById("menu");
 const nav = document.querySelector(".top");
 const mobileBtnExit = document.getElementById("exit");
@@ -23,7 +28,8 @@ blogSearch.addEventListener("click", () => {
 articlePopulate();
 function articlePopulate() {
   const articleContainer = document.querySelector(".articles");
-  let articlesArray = JSON.parse(localStorage.articles);
+  // let articlesArray = JSON.parse(localStorage.articles);
+ articles.then(articlesArray=>{
   for (let i = 0; i < articlesArray.length; i++) {
     let singleArticle = document.createElement("article");
     let link = document.createElement("a");
@@ -37,15 +43,16 @@ function articlePopulate() {
     let span2 = document.createElement("span");
     image.className = "main-img";
     image.src = articlesArray[i].picture;
+    console.log(image.src)
     title.innerText = articlesArray[i].title;
-    description.innerText = articlesArray[i].article.slice(0,30);
+    description.innerText = articlesArray[i].articleDetail.slice(0,30);
     singleArticle.className = "article";
     // img1.src = "img/view.png";
     
     img1.className = "fas fa-eye";
     // img2.src = "img/comment (1).png";
     img2.className = "fas fa-comment-alt";
-    link.href = "./article.html?id="+i;
+    link.href = `./article.html?id=${articlesArray[i]._id}`;
     span1.innerText = 1;
     span2.innerText = articlesArray[i].comments.length;
 
@@ -63,5 +70,5 @@ function articlePopulate() {
     articleContainer.appendChild(link);
 
     console.log(image);
-  }
+  }})
 }

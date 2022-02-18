@@ -2,12 +2,17 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
-
-const articles = localStorage.articles;
-let articlesArray = []
-if(articles){
-  articlesArray = JSON.parse(articles) ;
+const getArticles = async ()=>{
+ const articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
+  const articlesRes = await articlesResponse.json()
+  articlePopulate(articlesRes);
 }
+const logoutb = document.getElementById("logout-button")
+logoutb.onclick = ()=>{
+  sessionStorage.token = ""
+  window.location.href = "."
+}
+
 searchButton.addEventListener("click", () => {
   if (!searchInput.value.trim()) {
     getErrorMessage(searchButton.parentElement, "Put valid search");
@@ -15,8 +20,10 @@ searchButton.addEventListener("click", () => {
     getSuccessMessage(searchButton.parentElement, "Very good");
   }
 });
-articlePopulate();
-function articlePopulate() {
+
+getArticles()
+
+function articlePopulate(articlesArray) {
   const articleContainer = document.querySelector(".article-modify");
   
   for (let i = 0; i < articlesArray.length; i++) {
@@ -37,7 +44,7 @@ function articlePopulate() {
     let span2 = document.createElement("span");
  console.log(articlesArray[i])
     title.innerText = articlesArray[i].title;
-    article.innerText = articlesArray[i].article.slice(0,70);
+    article.innerText = articlesArray[i].articleDetail.slice(0,70);
     created.innerText = "Created: "+articlesArray[i].created;
     updated.innerText = "        Last updated: "+articlesArray[i].created;
 
@@ -53,8 +60,8 @@ function articlePopulate() {
     deleteButton.innerText ="Delete";
     deleteLink.appendChild(deleteButton);
     updateLink.appendChild(updateButton);
-    deleteLink.href = "delete.html?entity=article&index="+i;
-    updateLink.href = "update.html?index="+i;
+    deleteLink.href = `delete.html?entity=article&index=${articlesArray[i]._id}`;
+    updateLink.href = `update.html?index=${articlesArray[i]._id}`;
     
     
     span1.innerText = 1;

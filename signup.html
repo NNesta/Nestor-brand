@@ -13,12 +13,58 @@
     <title>User sign up</title>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo">
+      <span class="n">NN</span> <span class="left">ESTA</span>
+    </div>
+    <img
+      id="menu"
+      class="navbar-menu"
+      src="img/menu.svg"
+      alt="menu picture"
+    />
+
+    <div class="top">
+      <img
+        id="exit"
+        class="mobile-exit"
+        src="img/exit.svg"
+        alt="exit menu"
+        class="menu-close"
+      />
+
+      <ul class="right">
+        <li>
+          <a href=".">Home</a>
+        </li>
+
+        <li>
+          <a href="./#about">About</a>
+        </li>
+        <li>
+          <a href="./#portfolio">Portfolio</a>
+        </li>
+        <li>
+          <a  id="contact-on" href="./#contact">Contact</a>
+        </li>
+
+        <li>
+          <a href="blog.html">Blog</a>
+        </li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
     <div class="admin-login">
-        <h2>Sign up</h2>
+      
+        <h2>Create account</h2>
         <form id="signup-form1" action="login.html" method="get">
             <div class="first-name comp">
                 <label for=>First Name :</label> 
-                <input class="user-firstname" type="text" name="user-firstname" id="firstname">
+                <input class="user-firstname userData" type="text" name="user-firstname" id="firstname">
                 <i class="fas fa-check-circle "></i>
                 <i class="fas fa-exclamation-circle "></i>
                 
@@ -26,7 +72,7 @@
               
               <div class="second-name comp">
                 <label for=>Second Name :</label> 
-                <input class="user-secondname" type="text" name="user-secondname" id="secondname">
+                <input class="user-secondname userData" type="text" name="user-secondname" id="secondname">
                 <i class="fas fa-check-circle "></i>
                 <i class="fas fa-exclamation-circle "></i>
                 
@@ -34,7 +80,7 @@
               
             <div class="login-email comp">
             <label for=>Email:</label> 
-            <input class="email-user" type="email" name="email-user" id="login-email">
+            <input class="email-user userData" type="email" name="email-user" id="login-email">
             <i class="fas fa-check-circle "></i>
             <i class="fas fa-exclamation-circle "></i>
            
@@ -42,7 +88,7 @@
   
             <div class="login-pswd comp">
             <label for="">Password:</label>
-            <input class="psw"  type="password" name="password" id="pswd">
+            <input class="psw userData"  type="password" name="password" id="pswd">
             <i class="fas fa-check-circle "></i>
             <i class="fas fa-exclamation-circle "></i>
             
@@ -50,13 +96,13 @@
             
             <div class="login-pswd comp">
                 <label for="">Password Check:</label>
-                <input class="psw"  type="password" name="password-check" id="pswd-check">
+                <input class="psw  userData"  type="password" name="password-check" id="pswd-check">
                 <i class="fas fa-check-circle "></i>
                 <i class="fas fa-exclamation-circle "></i>
                
               <small></small></div>
                
-            <input id="login-b" class="login-button" type="submit" value="Sign up">
+            <input id="login-b" class="signup-button" type="submit" value="Create Account">
         </form>  
     </div>
     <hr />

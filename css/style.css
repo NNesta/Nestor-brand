@@ -72,6 +72,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 }
 .right {
   margin-top: 4rem;
+
 }
 .right li {
   list-style-type: none;
@@ -265,6 +266,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 /* end */
 
+
 /*contact  */
 
 #contact h2 {
@@ -291,8 +293,12 @@ label {
   margin-bottom: 1em;
   border-radius: 0.3em;
   border: 1px solid gray;
-  box-sizing: border-box;
+  box-sizing: border-box ;
 }
+.userButton, .queryButton{
+  display:flex
+}
+
 input[type="submit"] {
   background-color: var(--primary-color);
   color: white;
@@ -303,7 +309,7 @@ input[type="submit"] {
   border-radius: 5em;
   display: inline-block;
   padding: 0.8em 2em;
-  width: unset;
+  width: 30rem;
   padding-top: .72rem;
 }
 #contact {
@@ -392,7 +398,7 @@ body {
 
 .admin-login {
   display: block;
-  margin: 5rem 0 11rem 25rem;
+  margin: 4rem 15rem 5rem 15rem;
 }
 .user {
   display: block;
@@ -409,20 +415,35 @@ tr {
 }
 .admin-login h2 {
   color: var(--primary-color);
-  margin-left: 4rem;
+  margin-left: 8rem;
+  font-size: 2rem;
 
+}
+input{
+  width:6
+}
+.btn-update-create{
+  margin-left: 8rem;
+  width: 50rem !important;
 }
 
 .login-button {
   background: var(--primary-color);
   color: white;
   border-radius: 1rem;
-  width: 10rem;
+  width: 10rem !important;
   height: 3rem;
   font-size: 1.5rem;
-  padding: 0 0 6rem 0;
+  padding: 0 0 6rem 0 ;
 }
 .psw,.email-user, .user-secondname, .user-firstname {
+  margin-left: 2rem;
+  width: 18rem;
+  border-radius: 5rem;
+  
+}
+.psw-login,.email-user-login {
+  margin-left: auto;
   width: 18rem;
   border-radius: 5rem;
   
@@ -518,7 +539,7 @@ button {
 }
 button {
   cursor: pointer;
-  height: 2,5rem;
+  height: 2.5rem;
   border-radius: 5rem;
   padding-bottom: auto;
   margin-right: 2rem;
@@ -535,6 +556,7 @@ a{
 .create-article h2 {
   transform: translate(40%);
   color: var(--primary-color);
+  margin-top: 3rem;
 }
 .article-component {
   display: block;
@@ -680,7 +702,7 @@ footer {
     display: flex;
     place-content: space-between;
     list-style-type: none;
-    margin-left: 19rem;
+    margin-left: 12rem;
     margin-top: 1.2rem;
   }
   .top .right a {
@@ -808,8 +830,12 @@ color:black;
 margin-left:2rem;
 margin-right: .3rem;
 }
-.comp, .admin-login{
-  margin-top: 0;
+.comp {
+  display: flex
+}
+.comp label {
+  margin-left: auto;
+  
 }
 /* @media only screen and (min-width: 100px) {
   :root{
@@ -820,4 +846,17 @@ margin-right: .3rem;
     }
   } */
 /* end media query */
-
+}
+hr{
+  visibility:hidden;
+}
+footer{
+  position:absolute;
+   bottom:0;
+   width:100%;
+   z-index: 900;
+   visibility:hidden;
+}
+.isVisible{
+  visibility:hidden;
+}

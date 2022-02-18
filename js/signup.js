@@ -82,28 +82,17 @@ function showError() {
 }
 // This function store the filled element into localstorage if all element have valid input
 function storeArticle(firstName, secondName, email, password) {
-  let userDetails = {
-    userId: getId(),
-    firstname: firstName,
-    secondname: secondName,
+  const userDetails = {
+  
+    firstName: firstName,
+    secondName: secondName,
     email: email,
     password: password,
+    userStatus:0,
     longitude: userLongitude,
-    latitude: userLatitude,
+    latitude: userLatitude
   };
-  users.push(userDetails);
-
-  localStorage.setItem("users", JSON.stringify(users));
-}
-
-function getId() {
-  let idArray = [];
-  let id = 0;
-  for (let i = 0; i < users.length; i++) {
-    idArray.push(users[i].userId);
-  }
-  id = Math.max.apply(Math, idArray)
-  if(id<=0)
-  id=0;
-  return id+1;
+  fetch("https://nestor-portifolio-api.herokuapp.com/api/user",{method: "POST",
+  body: JSON.stringify(userDetails ),
+  headers: { 'Content-Type': 'application/json'}}).then(response=>response.json()).then(data=>console.log(data))
 }

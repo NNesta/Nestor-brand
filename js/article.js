@@ -1,28 +1,62 @@
 import { getSuccessMessage, getErrorMessage } from "./main.js";
-
+const token = sessionStorage.token;
 const commentForm = document.getElementById("form-contact");
 const url = window.location.href;
-const index = parseInt(url.split("=")[1]);
-const articles = JSON.parse(localStorage.articles);
-const article = articles[index];
-const userId = parseInt(localStorage.active);
-const users = JSON.parse(localStorage.users);
+const index = url.split("=")[1];
+
+
+let articleComments = "";
+console.log(index);
+// const articles = JSON.parse(localStorage.articles);
+const getArticle = async ()=>{
+const articleResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`)
+const commentsResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/comments/`)
+const articleData = await articleResponse.json();
+const comments = await commentsResponse.json();
+
+  console.log(articleData)
+const articleDetail = document.querySelector(".article-detail1");
+const mainImage = document.createElement("img");
+mainImage.src = articleData.picture;
+mainImage.className = "article-img-main";
+const title = document.createElement("h3");
+title.innerText = articleData.title;
+const body = document.createElement("p");
+body.innerText = articleData.articleDetail;
+articleDetail.appendChild(mainImage);
+articleDetail.appendChild(title);
+articleDetail.appendChild(body);
+  const articleComments = comments.filter(commentObj=>commentObj.articleId === index);
+  const allComment = document.querySelector(".others-comment");
+  const head1 = document.createElement("h2");
+  
+  head1.innerText = "What others are saying about this article";
+  allComment.appendChild(head1);
+  for (let i = 0; i < articleComments.length; i++) {
+    const commentSection = document.createElement("div");
+    commentSection.className = "comment-1";
+    const commentor = document.createElement("h4");
+    const date = document.createElement("span");
+    const commentaire = document.createElement("p");
+    date.className = "date";
+    commentaire.innerText = articleComments[i].comment;
+    commentor.innerText = articleComments[i].commentor;
+    date.innerText = articleComments[i].created;
+    commentSection.appendChild(commentor);
+    commentSection.appendChild(date);
+    commentSection.appendChild(commentaire);
+    allComment.appendChild(commentSection);
+  };
+  
+}
+
+getArticle()
+// const article = articles[index];
 commentForm.addEventListener("submit", (e) => {
   if (!checkComment(commentForm)) {
     e.preventDefault();
   }
 });
-const articleDetail = document.querySelector(".article-detail1");
-const mainImage = document.createElement("img");
-mainImage.src = article.picture;
-mainImage.className = "article-img-main";
-const title = document.createElement("h3");
-title.innerText = article.title;
-const body = document.createElement("p");
-body.innerText = article.article;
-articleDetail.appendChild(mainImage);
-articleDetail.appendChild(title);
-articleDetail.appendChild(body);
 
 const likeBtn = document.querySelector(".like__btn");
 let likeIcon = document.querySelector("#icon"),
@@ -35,12 +69,43 @@ likeBtn.addEventListener("click", () => {
     clicked = true;
     likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
     count.textContent++;
+    storeLike()
   } else {
     clicked = false;
     likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
     count.textContent--;
+    deleteLike()
   }
 });
+let deleteIndex = ""
+function storeLike(){
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${index}`, {
+    method: "POST",
+    body: JSON.stringify({ "likeType": 1 }),
+    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
+  });
+  
+}
+const deleteLike = async ()=>{
+  const allLikes = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/`, {
+    method: "GET",
+    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
+  });
+  const getlike = await allLikes.json()
+  const likeId = ()=>{
+    for(let i in getlike){
+    if(getlike[i].articleId==index)
+    return getlike[i]._id}
+  }
+  console.log(likeId())
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${likeId()}`, {
+    method: "DELETE",
+    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
+  });
+  console.log(response)
+}
+
+
 
 function checkComment(form) {
   const inputMessage = form["message"];
@@ -55,44 +120,12 @@ function checkComment(form) {
   }
 }
 
-function getUser() {
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].userId == userId) {
-      return users[i];
-    }
-  }
+const storeComment = async (message) => {
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${index}`, {
+    method: "POST",
+    body: JSON.stringify({ "comment": message }),
+    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
+  });
+  console.log(response)
 }
-const nameCommentor = getUser().firstname + " " + getUser().secondname;
-function storeComment(message) {
-  const comment = {
-    time: new Date().toLocaleString(),
-    name: nameCommentor,
-    email: getUser().email,
-    message: message,
-  };
 
-  article.comments.push(comment);
-  articles[index] = article;
-  localStorage.articles = JSON.stringify(articles);
-  console.log(articles[0].comments);
-}
-const comments = articles[index].comments;
-const allComment = document.querySelector(".others-comment");
-const head1 = document.createElement("h2");
-const commentaire = document.createElement("p");
-head1.innerText = "What others are saying about this article";
-allComment.appendChild(head1);
-for (let i = 0; i < comments.length; i++) {
-  const commentSection = document.createElement("div");
-  commentSection.className = "comment-1";
-  const commentor = document.createElement("h4");
-  const date = document.createElement("span");
-  date.className = "date";
-  commentaire.innerText = comments[i].message;
-  commentor.innerText = comments[i].name;
-  date.innerText = comments[i].time;
-  commentSection.appendChild(commentor);
-  commentSection.appendChild(date);
-  commentSection.appendChild(commentaire);
-  allComment.appendChild(commentSection);
-}

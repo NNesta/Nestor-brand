@@ -11,13 +11,59 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo">
+      <span class="n">NN</span> <span class="left">ESTA</span>
+    </div>
+    <img
+      id="menu"
+      class="navbar-menu"
+      src="img/menu.svg"
+      alt="menu picture"
+    />
+
+    <div class="top">
+      <img
+        id="exit"
+        class="mobile-exit"
+        src="img/exit.svg"
+        alt="exit menu"
+        class="menu-close"
+      />
+
+      <ul class="right">
+        <li>
+          <a href=".">Home</a>
+        </li>
+
+        <li>
+          <a href="./#about">About</a>
+        </li>
+        <li>
+          <a href=".#portfolio">Portfolio</a>
+        </li>
+        <li>
+          <a  id="contact-on" href="./#contact">Contact</a>
+        </li>
+
+        <li>
+          <a href="blog.html">Blog</a>
+        </li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
     <div class="create-article">
+      
         <h2>CREATE ARTICLE</h2>
         <div class="article-components">
             <form id="create-form" action="dashboard.html" method="get">
             <div class="article-title component">
                 <label>Title:</label>
-                <input id="title" type="text" name="name">
+                <input id="title" type="text" name="title">
                 <i class="fas fa-check-circle "></i>
             <i class="fas fa-exclamation-circle "></i>
             <br>
@@ -33,17 +79,17 @@
             <br/>
           <small></small>
             </div>
-            <div class="author component">
+            <!-- <div class="author component">
                 <label>Author:</label>
                 <input type="text" name="author" id="author">
                 <i class="fas fa-check-circle "></i>
             <i class="fas fa-exclamation-circle "></i>
             <br/>
           <small></small>
-            </div>
+            </div> -->
             <div class="full-article component">
                 <label>Article:</label>
-                <textarea name="article" id="article" cols="30" rows="10"></textarea>
+                <textarea name="articleDetail" id="article" cols="30" rows="10"></textarea>
                 <i class="fas fa-check-circle "></i>
             <i class="fas fa-exclamation-circle "></i>
             <br/>
@@ -57,7 +103,7 @@
             <br/>
           <small></small>
             </div>
-            <input id="create-btn" type="submit" value="Create Article">
+            <input class="btn-update-create" id="create-btn" type="submit" value="Create Article">
         </form>
         </div>
     </div>

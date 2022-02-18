@@ -1,16 +1,33 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
+const url = window.location.href;
+const index = url.split("=")[1];
+const token = sessionStorage.token;
 
+
+const update = async (index)=>{
+const getUserResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`,{
+  method: "GET",
+  headers:{
+    "accept":"application/json",
+    "Authorization": `Bearer ${token}`
+  }
+})
+const userData = await getUserResponse.json()
+  inputFirstName.value = userData.firstName;
+  inputSecondName.value = userData.secondName;
+  inputEmail.value = userData.email;
+  inputPswd.value = "";
+  inputPswdCheck.value = "";
+
+}
 const signUpForm = document.getElementById("signup-form1");
-const userArray = JSON.parse(localStorage.getItem("users"));
 const inputFirstName = signUpForm["user-firstname"];
   const inputSecondName = signUpForm["user-secondname"];
   const inputEmail = signUpForm["email-user"];
   const inputPswd = signUpForm["password"];
   const inputPswdCheck = signUpForm["password-check"];
-  const url = window.location.href;
-  const index = parseInt(url.split("=")[1]);
+  
   update(index);
-  console.log(userArray[index]);
 signUpForm.addEventListener("submit", (e) => {
   
   if(!checkCredential()){
@@ -19,13 +36,25 @@ signUpForm.addEventListener("submit", (e) => {
 });
 
 
-function update(index){
-    inputFirstName.value = userArray[index].firstname;
-    inputSecondName.value = userArray[index].secondname;
-    inputEmail.value = userArray[index].email;
-    inputPswd.value = userArray[index].password;
-    inputPswdCheck.value = userArray[index].password;
-
+ 
+const storeUser = async (firstName,secondName,email, password) => {
+  let userDetails = {
+    "firstname":firstName,
+    "secondname":secondName,
+    "email":email,
+    "password": password,
+    "longitude":userLongitude,
+    "latitude":userLatitude
+  };
+  
+const patchUserResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/user",{
+  method: "PATCH",
+  headers:{
+    "accept":"application/json",
+    "Authorization": `Bearer ${token}`
+  }
+})
+console.log(patchUserResponse)
 }
 
 function checkCredential() {
@@ -81,7 +110,7 @@ function checkCredential() {
     (inputPswd.value.trim()== inputPswdCheck.value.trim()));
 
   if (isValid) {
-    storeArticle(
+    storeUser(
       inputFirstName.value.trim(),
       inputSecondName.value.trim(),
       inputEmail.value.trim(),
@@ -102,23 +131,5 @@ function showError(){
   console.log("this browser doesnot dupport geolocation");
 }
 // This function store the filled element into localstorage if all element have valid input
-function storeArticle(
-  firstName,
-  secondName,
-  email,
-  password,
-) {
-  let userDetails = {
-    "firstname":firstName,
-    "secondname":secondName,
-    "email":email,
-    "password":password,
-    "longitude":userLongitude,
-    "latitude":userLatitude
-  };
-  
- userArray[index] = userDetails;
-  localStorage.setItem("users", JSON.stringify(userArray));
-}
 
 // This function validate form and call the store function then return true if all element have valid input
