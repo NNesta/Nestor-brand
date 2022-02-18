@@ -33,8 +33,9 @@ let picture = "";
 // });
 
 createForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+  
   if (!createFormValidate()) {
+    e.preventDefault();
   }
 });
 // This function store the filled element into localstorage if all element have valid input
