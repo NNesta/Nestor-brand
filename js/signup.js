@@ -8,6 +8,19 @@ signUpForm.addEventListener("submit", (e) => {
     e.preventDefault();
   }
 });
+const mainLogin = document.getElementById("main-login")
+const mainLogout = document.getElementById("main-logout")
+if(sessionStorage.token){
+  mainLogin.hidden = true
+  mainLogout.hidden = false;
+}
+else{
+  mainLogin.hidden = false
+  mainLogout.hidden = true;
+}
+mainLogout.onclick = ()=>{
+  sessionStorage.token = ""
+}
 
 function checkCredential() {
   const inputFirstName = signUpForm["user-firstname"];

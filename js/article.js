@@ -4,6 +4,20 @@ const commentForm = document.getElementById("form-contact");
 const url = window.location.href;
 const index = url.split("=")[1];
 
+const mainLogin = document.getElementById("main-login")
+const mainLogout = document.getElementById("main-logout")
+if(sessionStorage.token){
+  mainLogin.hidden = true
+  mainLogout.hidden = false;
+}
+else{
+  mainLogin.hidden = false
+  mainLogout.hidden = true;
+}
+mainLogout.onclick = ()=>{
+  sessionStorage.token = ""
+}
+
 
 let articleComments = "";
 console.log(index);

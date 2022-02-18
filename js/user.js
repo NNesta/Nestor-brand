@@ -1,5 +1,18 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 const token = sessionStorage.token
+const mainLogin = document.getElementById("main-login")
+const mainLogout = document.getElementById("main-logout")
+if(sessionStorage.token){
+  mainLogin.hidden = true
+  mainLogout.hidden = false;
+}
+else{
+  mainLogin.hidden = false
+  mainLogout.hidden = true;
+}
+mainLogout.onclick = ()=>{
+  sessionStorage.token = ""
+}
 
 const userPopulate = async () => {
   const userResponse = await fetch("http://127.0.0.1:3000/api/user", {
@@ -24,7 +37,7 @@ headers:{"accept":"application/json", "Authorization": `Bearer ${token}`}
   // let heading_6 = document.createElement("th");
   // heading_6.innerHTML = "Latitude";
   let heading_7 = document.createElement("th");
-  heading_7.innerHTML = "Action";
+  heading_7.innerHTML = "";
   let row_1 = document.createElement("tr");
 
   row_1.appendChild(heading_1);

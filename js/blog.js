@@ -48,6 +48,19 @@ function articlePopulate() {
     description.innerText = articlesArray[i].articleDetail.slice(0,30);
     singleArticle.className = "article";
     // img1.src = "img/view.png";
+    const mainLogin = document.getElementById("main-login")
+    const mainLogout = document.getElementById("main-logout")
+    if(sessionStorage.token){
+      mainLogin.hidden = true
+      mainLogout.hidden = false;
+    }
+    else{
+      mainLogin.hidden = false
+      mainLogout.hidden = true;
+    }
+    mainLogout.onclick = ()=>{
+      sessionStorage.token = ""
+    }
     
     img1.className = "fas fa-eye";
     // img2.src = "img/comment (1).png";

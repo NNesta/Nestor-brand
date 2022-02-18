@@ -2,7 +2,19 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 const url = window.location.href;
 const index = url.split("=")[1];
 const token = sessionStorage.token;
-
+const mainLogin = document.getElementById("main-login")
+const mainLogout = document.getElementById("main-logout")
+if(sessionStorage.token){
+  mainLogin.hidden = true
+  mainLogout.hidden = false;
+}
+else{
+  mainLogin.hidden = false
+  mainLogout.hidden = true;
+}
+mainLogout.onclick = ()=>{
+  sessionStorage.token = ""
+}
 
 const update = async (index)=>{
 const getUserResponse = await fetch(`http://127.0.0.1:3000/api/user/${index}`,{

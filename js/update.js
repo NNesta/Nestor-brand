@@ -3,6 +3,19 @@ const url = window.location.href;
 const updateForm = document.getElementById("update-form");
 const token = sessionStorage.token;
 let picture = "";
+const mainLogin = document.getElementById("main-login")
+const mainLogout = document.getElementById("main-logout")
+if(sessionStorage.token){
+  mainLogin.hidden = true
+  mainLogout.hidden = false;
+}
+else{
+  mainLogin.hidden = false
+  mainLogout.hidden = true;
+}
+mainLogout.onclick = ()=>{
+  sessionStorage.token = ""
+}
 
 updateForm["picture"].addEventListener("change", function () {
   const reader = new FileReader();

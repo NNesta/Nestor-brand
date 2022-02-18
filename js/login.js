@@ -4,6 +4,19 @@ const loginForm = document.getElementById("login-form1");
 const inputEmail = loginForm["email-user"];
 const inputpswd = loginForm["password"];
 let check = false;
+const mainLogin = document.getElementById("main-login")
+const mainLogout = document.getElementById("main-logout")
+if(sessionStorage.token){
+  mainLogin.hidden = true
+  mainLogout.hidden = false;
+}
+else{
+  mainLogin.hidden = false
+  mainLogout.hidden = true;
+}
+mainLogout.onclick = ()=>{
+  sessionStorage.token = ""
+}
 
 
 loginForm.addEventListener("submit", (e) => {
