@@ -1,6 +1,6 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 
-const articles = fetch('https://nestor-portifolio-api.herokuapp.com/api/article').then(response => response.json())
+const articles = fetch('http://127.0.0.1:3000/api/article').then(response => response.json())
 
 console.log(articles.then(data=>console.log(data)))
 

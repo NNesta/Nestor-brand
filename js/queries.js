@@ -1,7 +1,7 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 const token = sessionStorage.token;
 const queryPopulate = async () => {
-  const getQueryResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/message",{
+  const getQueryResponse = await fetch("http://127.0.0.1:3000/api/message",{
     method: "GET",
     headers:{
       "accept":"application/json",
