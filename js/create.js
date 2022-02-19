@@ -49,7 +49,7 @@ const storeArticle = async (title, picture, articleDetail, tag) => {
   };
   console.log(article)
 
-  const response = await fetch("http://127.0.0.1:3000/api/article", {
+  const response = await fetch("https://nestor-portifolio-api.herokuapp.com/api/article", {
     method: "POST",
     headers: {
       "Content-Type": "application/json ",

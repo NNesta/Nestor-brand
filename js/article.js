@@ -23,8 +23,8 @@ let articleComments = "";
 console.log(index);
 // const articles = JSON.parse(localStorage.articles);
 const getArticle = async ()=>{
-const articleResponse = await fetch(`http://127.0.0.1:3000/api/article/${index}`)
-const commentsResponse = await fetch(`http://127.0.0.1:3000/api/comments/`)
+const articleResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`)
+const commentsResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/comments/`)
 const articleData = await articleResponse.json();
 const comments = await commentsResponse.json();
 
@@ -93,7 +93,7 @@ likeBtn.addEventListener("click", () => {
 });
 let deleteIndex = ""
 function storeLike(){
-  const response = fetch(`http://127.0.0.1:3000/api/like/${index}`, {
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${index}`, {
     method: "POST",
     body: JSON.stringify({ "likeType": 1 }),
     headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
@@ -101,7 +101,7 @@ function storeLike(){
   
 }
 const deleteLike = async ()=>{
-  const allLikes = await fetch(`http://127.0.0.1:3000/api/like/`, {
+  const allLikes = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/`, {
     method: "GET",
     headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
   });
@@ -112,7 +112,7 @@ const deleteLike = async ()=>{
     return getlike[i]._id}
   }
   console.log(likeId())
-  const response = fetch(`http://127.0.0.1:3000/api/like/${likeId()}`, {
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${likeId()}`, {
     method: "DELETE",
     headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
   });
@@ -135,7 +135,7 @@ function checkComment(form) {
 }
 
 const storeComment = async (message) => {
-  const response = fetch(`http://127.0.0.1:3000/api/comment/${index}`, {
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${index}`, {
     method: "POST",
     body: JSON.stringify({ "comment": message }),
     headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },

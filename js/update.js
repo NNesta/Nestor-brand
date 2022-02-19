@@ -42,7 +42,7 @@ updateForm.addEventListener("submit", (e) => {
 
 
 const update = async (index) =>{
-  const articleResponse = await fetch(`http://127.0.0.1:3000/api/article/${index}`)
+  const articleResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`)
   const articleArray = await articleResponse.json()
   articleTitle.value = articleArray.title;
   articleArticle.value = articleArray.articleDetail;
@@ -60,7 +60,7 @@ const storeArticle = async (title, picture, articleDetail, tag) =>{
    
   };
   try{
-  const response = await fetch(`http://127.0.0.1:3000/api/article/${index}`, {
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`, {
     method: "PATCH",
     body: JSON.stringify(article),
     headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },
