@@ -5,6 +5,7 @@ const searchInput = document.getElementById("srchinput");
 const getArticles = async ()=>{
  const articlesResponse =  await fetch('http://127.0.0.1:3000/api/article')
   const articlesRes = await articlesResponse.json()
+  console.log(articlesRes.filter);
   articlePopulate(articlesRes);
 }
 const logoutb = document.getElementById("logout-button")
