@@ -30,7 +30,8 @@ updateUserLink.href = `./updateuser.html?index=${sessionStorage.userId}`
 updateUserLink.innerHTML = `Hello ${name}`;
 }
 
-loginForm.addEventListener("submit", (e) => {e.preventDefault();
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   checkCredential();
  
 });
@@ -80,7 +81,7 @@ const getUser = async (email, password) => {
     if(res.userStatus ==1){
       window.location.href = `./dashboard.html?index=${sessionStorage.userId}`
     }
-    if(res.userStatus ==1){
+    if(res.userStatus == 2){
       window.location.href = `./dashboard.html`
     }
     

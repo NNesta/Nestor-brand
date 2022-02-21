@@ -715,9 +715,13 @@ footer {
     place-content: space-between;
    
   }
-  .users h4 {
+  .users h2 {
       margin-top: 4rem;
       margin-left: 20rem;
+  }
+  .queries h2 {
+      margin-top: 4rem;
+      margin-left: 25rem;
   }
   .right {
     display: flex;

@@ -78,6 +78,7 @@ const userData = await getUserResponse.json()
     window.location.href = "./user.html"
   } else {
     console.log(await patchUserResponse.json());
+    window.location.href = "./dashboard.html"
   }
   }
 catch(error){
@@ -90,10 +91,10 @@ signUpForm.addEventListener("submit", (e) => {
 });
 function checkCredential() {
   if (!userStatus.value.trim()) {
-    getErrorMessage(userStatus, "Invalid email");
+    getErrorMessage(userStatus, "Invalid status");
     storeUser(userStatus.value.trim());
   } else {
-    getSuccessMessage(userStatus, "Very good");
+    getSuccessMessage(userStatus, "");
   }
 }
  

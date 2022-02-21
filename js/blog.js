@@ -78,12 +78,13 @@ const articlePopulate = async() => {
     title.innerText = articlesArray[i].title.slice(0,30);
     description.innerText = articlesArray[i].articleDetail.slice(0,30);
     singleArticle.className = "article";
+    link.href = `./article.html?id=${articlesArray[i]._id}`;
     // img1.src = "img/view.png";
    
     img1.className = "fas fa-thumbs-up";
     // img2.src = "img/comment (1).png";
     img2.className = "fas fa-comment-alt";
-    link.href = `./article.html?id=${articlesArray[i]._id}`;
+    
     span1.innerText = numberOfLikes;
     span2.innerText = numberOfComments;
 

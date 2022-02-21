@@ -30,6 +30,12 @@ function articlePopulate(articlesArray) {
   const articleContainer = document.querySelector(".article-modify");
   
   for (let i = 0; i < articlesArray.length; i++) {
+    const commentsResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${articlesArray[i]._id}`);
+    const likeResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${articlesArray[i]._id}`);
+    const likes = await likeResponse.json();
+    const numberOfLikes = likes.length;
+    const articleComments = await commentsResponse.json();
+    const numberOfComments = articleComments.length;
     let singleArticle = document.createElement("article");
     let link = document.createElement("a");
     let title = document.createElement("h2");
@@ -55,10 +61,14 @@ function articlePopulate(articlesArray) {
     title.className = "article-title";
     created.className = "date-time";
     updated.className = "date-time";
-    img1.className = "fas fa-eye";
-    img2.src = "img/comment (1).png";
-    img2.className = "article-img";
-    link.href = "./article.html";
+    img1.className = "fas fa-thumbs-up";
+    // img2.src = "img/comment (1).png";
+    img2.className = "fas fa-comment-alt";
+    link.href = `./article.html?id=${articlesArray[i]._id}`;
+    span1.innerText = numberOfLikes;
+    span2.innerText = numberOfComments;
+
+
     updateButton.innerText = "Update";
     deleteButton.innerText ="Delete";
     deleteLink.appendChild(deleteButton);
