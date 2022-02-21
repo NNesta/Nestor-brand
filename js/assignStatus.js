@@ -53,6 +53,9 @@ const userData = await getUserResponse.json()
 
   const storeUser = async (status) => {
       let userNumber = 0
+      if(status == "user"){
+          userNumber = 0
+      }
       if(status == "author"){
           userNumber = 1
       }
