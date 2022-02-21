@@ -2,37 +2,10 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 const url = window.location.href;
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
-const getArticles = async ()=>{
- const articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
-  const articlesRes = await articlesResponse.json()
-  let authorArticles = {}
-  if(sessionStorage.userStatus == 2){
-  authorArticles = articlesRes.filter(article =>{return article.author.id == sessionStorage.userId})}
-  if(sessionStorage.userStatus == 3){
-    authorArticles = articlesRes;
-  }else{
-    window.location.href = "."
-  }
-  console.log(authorArticles);
-  articlePopulate(authorArticles);
-}
-const logoutb = document.getElementById("logout-button")
-logoutb.onclick = ()=>{
-  sessionStorage.token = ""
-  window.location.href = "."
-}
 
-searchButton.addEventListener("click", () => {
-  if (!searchInput.value.trim()) {
-    getErrorMessage(searchButton.parentElement, "Put valid search");
-  } else {
-    getSuccessMessage(searchButton.parentElement, "Very good");
-  }
-});
 
-getArticles()
 
-function articlePopulate(articlesArray) {
+const articlePopulate = async (articlesArray) => {
   const articleContainer = document.querySelector(".article-modify");
   
   for (let i = 0; i < articlesArray.length; i++) {
@@ -106,5 +79,37 @@ function articlePopulate(articlesArray) {
  
   }
 }
+
+const getArticles = async ()=>{
+ const articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
+  const articlesRes = await articlesResponse.json()
+  let authorArticles = {}
+  if(sessionStorage.userStatus == 2){
+  authorArticles = articlesRes.filter(article =>{return article.author.id == sessionStorage.userId})}
+  if(sessionStorage.userStatus == 3){
+    authorArticles = articlesRes;
+  }else{
+    window.location.href = "."
+  }
+ 
+  articlePopulate(authorArticles);
+}
+const logoutb = document.getElementById("logout-button")
+logoutb.onclick = ()=>{
+  sessionStorage.token = ""
+  window.location.href = "."
+}
+
+searchButton.addEventListener("click", () => {
+  if (!searchInput.value.trim()) {
+    getErrorMessage(searchButton.parentElement, "Put valid search");
+  } else {
+    getSuccessMessage(searchButton.parentElement, "Very good");
+  }
+});
+
+getArticles()
+
+
 
 
