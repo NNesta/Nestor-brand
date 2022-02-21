@@ -27,7 +27,7 @@ const articlePopulate = async (articlesArray) => {
     let deleteLink = document.createElement("a");
     let updateLink = document.createElement("a");
     let img1 = document.createElement("i");
-    let img2 = document.createElement("img");
+    let img2 = document.createElement("i");
     let span1 = document.createElement("span");
     let span2 = document.createElement("span");
  console.log(articlesArray[i])

@@ -45,9 +45,7 @@ createForm["picture"].addEventListener("change", function () {
 
 createForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (!createFormValidate()) {
-    
-  }
+  createFormValidate();
 });
 // This function store the filled element into localstorage if all element have valid input
 const storeArticle = async (title, picture, articleDetail, tag) => {
@@ -58,7 +56,6 @@ const storeArticle = async (title, picture, articleDetail, tag) => {
     tag: tag
 
   };
-  console.log(article)
 
   const response = await fetch("https://nestor-portifolio-api.herokuapp.com/api/article", {
     method: "POST",
@@ -68,7 +65,9 @@ const storeArticle = async (title, picture, articleDetail, tag) => {
     },
     body: JSON.stringify(article),
   });
-  console.log(response);
+ if(response.status == 200){
+   window.location.href = "./dashboard.html";
+ }
 };
 
 // This function validate form and call the store function then return true if all element have valid input

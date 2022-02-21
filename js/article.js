@@ -142,6 +142,17 @@ if(sessionStorage.token){
 };
 click();
 
+const storeComment = async (message) => {
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${index}`, {
+    method: "POST",
+    body: JSON.stringify({ comment: message }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  console.log(response);
+};
 
 const storeLike = async () =>{
   const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${index}`, {
@@ -177,14 +188,3 @@ function checkComment(form) {
   }
 }
 
-const storeComment = async (message) => {
-  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${index}`, {
-    method: "POST",
-    body: JSON.stringify({ comment: message }),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  console.log(response);
-};

@@ -46,9 +46,7 @@ const articleTag = updateForm["tag"];
 const index = url.split("=")[1];
 updateForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (!updateFormValidate()) {
-    
-  }
+  updateFormValidate();
 });
 
 
@@ -81,6 +79,9 @@ const storeArticle = async (title, picture, articleDetail, tag) =>{
   catch(error){
     console.log(error)
   }
+  if(response.status == 200){
+    window.location.href = "./dashboard.html"
+  }
 
 }
 
@@ -95,7 +96,6 @@ function updateFormValidate() {
   }
   
   if (!articleArticle) {
-    i
     getErrorMessage(articleArticle, "Put valid title");
   } else {
     
