@@ -13,8 +13,6 @@ if(!sessionStorage.token){
   promptLogin.hidden = true;
 }
 
-const mainLogin = document.getElementById("main-login");
-const mainLogout = document.getElementById("main-logout");
 const nameSect = document.getElementById("names")
 
 if(sessionStorage.token){
@@ -28,17 +26,17 @@ else{
   nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
+  window.location.href = "./login.html"
   sessionStorage.clear()
 }
 if(sessionStorage.name){
 
 const name = sessionStorage.name.split(" ")[0];
 const updateUserLink = document.getElementById("usersignup");
-updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.href = `./updateuser.html?index=${sessionStorage.userId}`
 updateUserLink.innerHTML = `Hello ${name}`;
 }
 
-let articleComments = "";
 console.log(index);
 // const articles = JSON.parse(localStorage.articles);
 const getArticle = async () => {

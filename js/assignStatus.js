@@ -4,16 +4,28 @@ const index = url.split("=")[1];
 const token = sessionStorage.token;
 const mainLogin = document.getElementById("main-login")
 const mainLogout = document.getElementById("main-logout")
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  window.location.href = "./login.html"
+  sessionStorage.clear()
+}
+if(sessionStorage.name){
+
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html?index=${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
 }
 const signUpForm = document.getElementById("signup-form1");
 const inputFirstName = signUpForm["user-firstname"];

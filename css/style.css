@@ -715,12 +715,15 @@ footer {
     place-content: space-between;
    
   }
-  
+  .users h4 {
+      margin-top: 4rem;
+      margin-left: 20rem;
+  }
   .right {
     display: flex;
     place-content: space-between;
     list-style-type: none;
-    margin-left: 9rem;
+    margin-left: 19rem;
     margin-top: 1.2rem;
   }
   .top .right a {

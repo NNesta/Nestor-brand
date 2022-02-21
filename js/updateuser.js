@@ -17,16 +17,16 @@ else{
   nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
+  window.location.href = "./login.html"
   sessionStorage.clear()
 }
 if(sessionStorage.name){
 
 const name = sessionStorage.name.split(" ")[0];
 const updateUserLink = document.getElementById("usersignup");
-updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.href = `./updateuser.html?index=${sessionStorage.userId}`
 updateUserLink.innerHTML = `Hello ${name}`;
 }
-
 const update = async (index)=>{
 const getUserResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`,{
   method: "GET",
