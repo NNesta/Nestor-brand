@@ -75,13 +75,13 @@ const getUser = async (email, password) => {
     sessionStorage.email = res.email;
     sessionStorage.name = res.name;
     sessionStorage.userStatus = res.userstatus;
-    if(res.userStatus ==0){
+    if(res.userStatus ==1){
       window.location.href = `./updateUser.html?index=${sessionStorage.userId}` 
     }
-    if(res.userStatus ==1){
+    if(res.userStatus ==2){
       window.location.href = `./dashboard.html?index=${sessionStorage.userId}`
     }
-    if(res.userStatus == 2){
+    if(res.userStatus == 3){
       window.location.href = `./dashboard.html`
     }
     

@@ -83,13 +83,13 @@ headers:{"accept":"application/json", "Authorization": `Bearer ${token}`}
     data_5.innerHTML = `(${latitude}, ${longitude})`;
     let data_6 = document.createElement("td");
     const statusWord = statusNumber => {
-      if(userArray[i].userStatus ==0){
+      if(userArray[i].userStatus ==1){
         return "User";
       }
-      if(userArray[i].userStatus ==1){
+      if(userArray[i].userStatus ==2){
         return "Author";
       }
-      if(userArray[i].userStatus == 2){
+      if(userArray[i].userStatus == 3){
         return "Admin"
       }
     };

@@ -52,15 +52,15 @@ const userData = await getUserResponse.json()
   update(index);
 
   const storeUser = async (status) => {
-      let userNumber = 0
+      let userNumber = 1
       if(status == "user"){
-          userNumber = 0
-      }
-      if(status == "author"){
           userNumber = 1
       }
-      if(status == "admin"){
+      if(status == "author"){
           userNumber = 2
+      }
+      if(status == "admin"){
+          userNumber = 3
       }
     let userStatus = {
       "userStatus": userNumber

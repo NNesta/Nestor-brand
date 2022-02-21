@@ -51,7 +51,7 @@ const storeArticle = async (firstName, secondName, email, password) =>{
     secondName: secondName,
     email: email,
     password: password,
-    userStatus:0,
+    userStatus:1,
     longitude: userLongitude,
     latitude: userLatitude
   };
