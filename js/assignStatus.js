@@ -78,7 +78,7 @@ const userData = await getUserResponse.json()
     window.location.href = "./user.html"
   } else {
     console.log(await patchUserResponse.json());
-    window.location.href = "./dashboard.html"
+    window.location.href = "./user.html"
   }
   }
 catch(error){
@@ -92,9 +92,10 @@ signUpForm.addEventListener("submit", (e) => {
 function checkCredential() {
   if (!userStatus.value.trim()) {
     getErrorMessage(userStatus, "Invalid status");
-    storeUser(userStatus.value.trim());
+    
   } else {
     getSuccessMessage(userStatus, "");
+    storeUser(userStatus.value.trim());
   }
 }
  
