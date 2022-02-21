@@ -49,7 +49,7 @@ const getUser = async (email, password) => {
     email: email,
     password: password,
   };
-  const response = await fetch("http://127.0.0.1:3000/api/login", {
+  const response = await fetch("https://nestor-portifolio-api.herokuapp.com/api/login", {
     method: "POST",
     body: JSON.stringify(credentials),
     headers: { "Content-Type": "application/json" },

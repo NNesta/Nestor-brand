@@ -105,7 +105,7 @@ function storeArticle(firstName, secondName, email, password) {
     longitude: userLongitude,
     latitude: userLatitude
   };
-  fetch("http://127.0.0.1:3000/api/user",{method: "POST",
+  fetch("https://nestor-portifolio-api.herokuapp.com/api/user",{method: "POST",
   body: JSON.stringify(userDetails ),
   headers: { 'Content-Type': 'application/json'}}).then(response=>response.json()).then(data=>console.log(data))
 }

@@ -1,6 +1,7 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
-
 const token = sessionStorage.token;
+let picture = "";
+
 console.log(token);
 const now = new Date();
 const mainLogin = document.getElementById("main-login")
@@ -19,37 +20,36 @@ mainLogout.onclick = ()=>{
 
 const createForm = document.getElementById("create-form");
 
-let picture = "";
 
-// createForm["picture"].addEventListener("change", function () {
-//   const reader = new FileReader();
 
-//   reader.addEventListener("load", () => {
-//     picture = reader.result;
-//     console.log(picture);
-//   });
+createForm["picture"].addEventListener("change", function () {
+  const reader = new FileReader();
 
-//   reader.readAsDataURL(this.files[0]);
-// });
+  reader.addEventListener("load", () => {
+    picture = reader.result;
+  });
+
+  reader.readAsDataURL(this.files[0]);
+});
 
 createForm.addEventListener("submit", (e) => {
-  
+  e.preventDefault();
   if (!createFormValidate()) {
-    e.preventDefault();
+    
   }
 });
 // This function store the filled element into localstorage if all element have valid input
 const storeArticle = async (title, picture, articleDetail, tag) => {
   let article = {
     title: title,
-    picture: picture.replace("C:\\fakepath\\","C:\\Users\\NSHIZIRUNGU Vedaste\\Desktop\\api\\Nesta-brand-api\\testcl\\"),
+    picture: picture,
     articleDetail: articleDetail,
     tag: tag
 
   };
   console.log(article)
 
-  const response = await fetch("http://127.0.0.1:3000/api/article", {
+  const response = await fetch("https://nestor-portifolio-api.herokuapp.com/api/article", {
     method: "POST",
     headers: {
       "Content-Type": "application/json ",
@@ -96,8 +96,7 @@ function createFormValidate() {
     articleTag.value;
 
   if (isValid) {
-    console.log(createForm);
-    storeArticle(articleTitle.value, articlePicture.value, articleArticle.value, articleTag.value);
+    storeArticle(articleTitle.value, picture, articleArticle.value, articleTag.value);
     return isValid;
   }
 }

@@ -22,7 +22,6 @@ updateForm["picture"].addEventListener("change", function () {
 
   reader.addEventListener("load", () => {
     picture = reader.result;
-    console.log(picture);
   });
 
   reader.readAsDataURL(this.files[0]);
@@ -30,28 +29,49 @@ updateForm["picture"].addEventListener("change", function () {
 
 const articleTitle = updateForm["title"];
 const articlePicture = updateForm["picture"];
-const articleCreated = updateForm["created"];
 const articleArticle = updateForm["article"];
 const articleTag = updateForm["tag"];
 const index = url.split("=")[1];
 updateForm.addEventListener("submit", (e) => {
-  
+  e.preventDefault();
   if (!updateFormValidate()) {
-    e.preventDefault();
+    
   }
 });
 
 
 
 const update = async (index) =>{
-  const articleResponse = await fetch(`http://127.0.0.1:3000/api/article/${index}`)
+  const articleResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`)
   const articleArray = await articleResponse.json()
   articleTitle.value = articleArray.title;
-  articleCreated.value = articleArray.created;
   articleArticle.value = articleArray.articleDetail;
   articleTag.value = articleArray.tag;
 
 }
+update(index);
+const storeArticle = async (title, picture, articleDetail, tag) =>{
+  
+  let article = {
+    title: title,
+    picture: picture,
+    articleDetail: articleDetail,
+    tag: tag
+   
+  };
+  try{
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`, {
+    method: "PATCH",
+    body: JSON.stringify(article),
+    headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },
+  });
+  console.log(response)}
+  catch(error){
+    console.log(error)
+  }
+
+}
+
 function updateFormValidate() {
   let isValid = false;
   if (!articleTitle) {
@@ -61,20 +81,7 @@ function updateFormValidate() {
   
     getSuccessMessage(articleTitle, "Very good");
   }
-  if (!articlePicture) {
-    
-    getErrorMessage(articlePicture, "Put valid title");
-  } else {
   
-    getSuccessMessage(articlePicture, "Very good");
-  }
-  if (!articleCreated) {
-    
-    getErrorMessage(articleCreated, "Put valid title");
-  } else {
-  
-    getSuccessMessage(articleCreated, "Very good");
-  }
   if (!articleArticle) {
     i
     getErrorMessage(articleArticle, "Put valid title");
@@ -90,40 +97,17 @@ function updateFormValidate() {
     getSuccessMessage(articleTag, "Very good");
   }
 
-isValid = (articleTitle.value && articlePicture.value && articleTag.value && articleCreated.value && articleArticle.value)
+isValid = (articleTitle.value && articleArticle.value&& articleTag.value)
   if (isValid) {
     // console.log("yes")
     storeArticle(
       articleTitle.value.trim(),
       picture,
-      articleCreated.value.trim(),
       articleArticle.value.trim(),
       articleTag.value.trim()
     );
 
     return isValid;
   }
-}
-update(index);
-const storeArticle = async (title, picture, articleDetail, tag) =>{
-  
-  let article = {
-    title: title,
-    picture: picture,
-    articleDetail: articleDetail,
-    tag: tag
-   
-  };
-  try{
-  const response = await fetch(`http://127.0.0.1:3000/api/article/${index}`, {
-    method: "PATCH",
-    body: JSON.stringify(article),
-    headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },
-  });
-  console.log(response)}
-  catch(error){
-    console.log(error)
-  }
-
 }
 

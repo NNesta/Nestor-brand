@@ -17,7 +17,7 @@ mainLogout.onclick = ()=>{
 }
 
 const update = async (index)=>{
-const getUserResponse = await fetch(`http://127.0.0.1:3000/api/user/${index}`,{
+const getUserResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`,{
   method: "GET",
   headers:{
     "accept":"application/json",
@@ -59,7 +59,7 @@ const storeUser = async (firstName,secondName,email, password) => {
     "latitude":userLatitude
   };
   
-const patchUserResponse = await fetch("http://127.0.0.1:3000/api/user",{
+const patchUserResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/user",{
   method: "PATCH",
   headers:{
     "accept":"application/json",

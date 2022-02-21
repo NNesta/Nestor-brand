@@ -1,8 +1,8 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 
-const articles = fetch('http://127.0.0.1:3000/api/article').then(response => response.json())
+// const articles = fetch('https://nestor-portifolio-api.herokuapp.com/api/article').then(response => response.json())
 
-console.log(articles.then(data=>console.log(data)))
+// console.log(articles.then(data=>console.log(data)))
 
 const mobileBtn = document.getElementById("menu");
 const nav = document.querySelector(".top");
@@ -25,11 +25,12 @@ blogSearch.addEventListener("click", () => {
     getSuccessMessage(blogSearch.parentElement, "Very Nice");
   }
 });
-articlePopulate();
-function articlePopulate() {
+// articlePopulate();
+const articlePopulate = async() => {
+  const articles = await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
   const articleContainer = document.querySelector(".articles");
   // let articlesArray = JSON.parse(localStorage.articles);
- articles.then(articlesArray=>{
+ const articlesArray = await articles.json()
   for (let i = 0; i < articlesArray.length; i++) {
     let singleArticle = document.createElement("article");
     let link = document.createElement("a");
@@ -44,7 +45,7 @@ function articlePopulate() {
     image.className = "main-img";
     image.src = articlesArray[i].picture;
     console.log(image.src)
-    title.innerText = articlesArray[i].title;
+    title.innerText = articlesArray[i].title.slice(0,30);
     description.innerText = articlesArray[i].articleDetail.slice(0,30);
     singleArticle.className = "article";
     // img1.src = "img/view.png";
@@ -67,7 +68,7 @@ function articlePopulate() {
     img2.className = "fas fa-comment-alt";
     link.href = `./article.html?id=${articlesArray[i]._id}`;
     span1.innerText = 1;
-    span2.innerText = articlesArray[i].comments.length;
+    // span2.innerText = articlesArray[i].comments.length;
 
     bottomPart.appendChild(img1);
     bottomPart.appendChild(span1);
@@ -83,5 +84,6 @@ function articlePopulate() {
     articleContainer.appendChild(link);
 
     console.log(image);
-  }})
-}
+  }}
+  articlePopulate()
+
