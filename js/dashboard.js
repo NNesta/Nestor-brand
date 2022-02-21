@@ -1,12 +1,18 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 const url = window.location.href;
-const index = url.split("=")[1];
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
 const getArticles = async ()=>{
  const articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
   const articlesRes = await articlesResponse.json()
-  const authorArticles =index ? articlesRes.filter(article =>{return article.author.id == index}):articlesRes
+  let authorArticles = {}
+  if(sessionStorage.userStatus == 2){
+  authorArticles = articlesRes.filter(article =>{return article.author.id == sessionStorage.userId})}
+  if(sessionStorage.userStatus == 3){
+    authorArticles = articlesRes;
+  }else{
+    window.location.href = "."
+  }
   console.log(authorArticles);
   articlePopulate(authorArticles);
 }

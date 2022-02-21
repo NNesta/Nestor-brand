@@ -79,7 +79,7 @@ const getUser = async (email, password) => {
       window.location.href = `./updateUser.html?index=${sessionStorage.userId}` 
     }
     if(res.userStatus ==2){
-      window.location.href = `./dashboard.html?index=${sessionStorage.userId}`
+      window.location.href = `./dashboard.html`
     }
     if(res.userStatus == 3){
       window.location.href = `./dashboard.html`
