@@ -43,9 +43,9 @@ console.log(index);
 // const articles = JSON.parse(localStorage.articles);
 const getArticle = async () => {
   const articleResponse = await fetch(
-    `http://127.0.0.1:3000/api/article/${index}`
+    `https://nestor-portifolio-api.herokuapp.com/api/article/${index}`
   );
-  const commentsResponse = await fetch(`http://127.0.0.1:3000/api/comment/${index}`);
+  const commentsResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${index}`);
   const articleData = await articleResponse.json();
   const articleComments = await commentsResponse.json();
 
@@ -98,7 +98,7 @@ let likeIcon = document.querySelector("#icon");
 
 let click = async () => {
   const likeResponse = await fetch(
-    `http://127.0.0.1:3000/api/like/${index}/${sessionStorage.userId}`,
+    `https://nestor-portifolio-api.herokuapp.com/api/like/${index}/${sessionStorage.userId}`,
     {
       method: "GET",
       headers: {
@@ -107,7 +107,7 @@ let click = async () => {
     }
   );
   const likesResponses = await fetch(
-    `http://127.0.0.1:3000/api/like/${index}`,
+    `https://nestor-portifolio-api.herokuapp.com/api/like/${index}`,
     {
       method: "GET",
       headers: {
@@ -144,7 +144,7 @@ click();
 
 
 const storeLike = async () =>{
-  const response = await fetch(`http://127.0.0.1:3000/api/like/${index}`, {
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${index}`, {
     method: "POST",
     body: JSON.stringify({ likeType: 1 }),
     headers: {
@@ -155,7 +155,7 @@ const storeLike = async () =>{
 }
 const deleteLike = async() =>{
   const response = await fetch(
-    `http://127.0.0.1:3000/api/like/${index}/${sessionStorage.userId}`,
+    `https://nestor-portifolio-api.herokuapp.com/api/like/${index}/${sessionStorage.userId}`,
     {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -178,7 +178,7 @@ function checkComment(form) {
 }
 
 const storeComment = async (message) => {
-  const response = fetch(`http://127.0.0.1:3000/api/comment/${index}`, {
+  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${index}`, {
     method: "POST",
     body: JSON.stringify({ comment: message }),
     headers: {

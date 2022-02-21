@@ -46,7 +46,7 @@ const storeQueries = async (name,email,message) => {
   };
   console.log(messageDetail)
  
-  const postQueryResponse = await fetch("http://127.0.0.1:3000/api/message", {
+  const postQueryResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/message", {
     method: "POST",
     body: JSON.stringify(messageDetail),
     headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },

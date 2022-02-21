@@ -22,7 +22,7 @@ const inputFirstName = signUpForm["user-firstname"];
   const userStatus = signUpForm["option-status"];
 
 const update = async (index)=>{
-const getUserResponse = await fetch(`http://127.0.0.1:3000/api/user/${index}`,{
+const getUserResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`,{
   method: "GET",
   headers:{
     "accept":"application/json",
@@ -52,7 +52,7 @@ const userData = await getUserResponse.json()
     };
     console.log(userStatus)
    try{ 
-  const patchUserResponse = await fetch(`http://127.0.0.1:3000/api/user/${index}`,{
+  const patchUserResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`,{
     method: "PATCH",
     body: JSON.stringify(userStatus),
     headers:{

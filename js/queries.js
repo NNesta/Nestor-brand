@@ -26,7 +26,7 @@ updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
 updateUserLink.innerHTML = `Hello ${name}`;
 }
 const queryPopulate = async () => {
-  const getQueryResponse = await fetch("http://127.0.0.1:3000/api/message",{
+  const getQueryResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/message",{
     method: "GET",
     headers:{
       "accept":"application/json",

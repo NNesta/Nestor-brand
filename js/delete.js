@@ -5,7 +5,7 @@ const token = sessionStorage.token;
 
 const deleteArticle = async (index)=> {
   
-  const response = await fetch(`http://127.0.0.1:3000/api/article/${index}`, {
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json", "Authorization":`Bearer ${token}` },
   });
@@ -13,7 +13,7 @@ const deleteArticle = async (index)=> {
 }
 
 const deleteUser= async (index) => {
-  const response = await fetch(`http://127.0.0.1:3000/api/user/${index}`, {
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json", "Authorization":`Bearer ${token}` },
   });;
@@ -21,7 +21,7 @@ const deleteUser= async (index) => {
 }
 
 const deleteQuery= async (index) => {
-  const response = await fetch(`http://127.0.0.1:3000/api/message/${index}`, {
+  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/message/${index}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json", "Authorization":`Bearer ${token}` },
   });

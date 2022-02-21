@@ -1,6 +1,6 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 
-// const articles = fetch('http://127.0.0.1:3000/api/article').then(response => response.json())
+// const articles = fetch('https://nestor-portifolio-api.herokuapp.com/api/article').then(response => response.json())
 
 // console.log(articles.then(data=>console.log(data)))
 
@@ -51,13 +51,13 @@ blogSearch.addEventListener("click", () => {
 });
 // articlePopulate();
 const articlePopulate = async() => {
-  const articles = await fetch('http://127.0.0.1:3000/api/article')
+  const articles = await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
   const articleContainer = document.querySelector(".articles");
   // let articlesArray = JSON.parse(localStorage.articles);
  const articlesArray = await articles.json()
   for (let i = 0; i < articlesArray.length; i++) {
-    const commentsResponse = await fetch(`http://127.0.0.1:3000/api/comment/${articlesArray[i]._id}`);
-    const likeResponse = await fetch(`http://127.0.0.1:3000/api/like/${articlesArray[i]._id}`);
+    const commentsResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${articlesArray[i]._id}`);
+    const likeResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${articlesArray[i]._id}`);
     const likes = await likeResponse.json();
     const numberOfLikes = likes.length;
     const articleComments = await commentsResponse.json();

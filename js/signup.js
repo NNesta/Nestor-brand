@@ -56,7 +56,7 @@ const storeArticle = async (firstName, secondName, email, password) =>{
   };
   try{
     console.log(userDetails)
- const response = await fetch("http://127.0.0.1:3000/api/user",{method: "POST",
+ const response = await fetch("https://nestor-portifolio-api.herokuapp.com/api/user",{method: "POST",
   body: JSON.stringify(userDetails ),
   headers: { 'Content-Type': 'application/json'}})
 console.log(response)
