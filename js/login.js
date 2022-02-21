@@ -74,7 +74,7 @@ const getUser = async (email, password) => {
     sessionStorage.userId = res.userId;
     sessionStorage.email = res.email;
     sessionStorage.name = res.name;
-    sessionStorage.userStatus = res.userstatus;
+    sessionStorage.userStatus = res.userStatus;
     if(res.userStatus ==1){
       window.location.href = `./updateUser.html?index=${sessionStorage.userId}` 
     }
