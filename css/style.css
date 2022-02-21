@@ -396,10 +396,18 @@ body {
 /* end blog */
 
 /* login */
+.login-form {
+  margin-left:8.5rem;
+}
+.signup-button{
+  margin-left:6.5rem;
+  height:3rem;
+  width:20rem !important;
+}
 
 .admin-login {
   display: block;
-  margin: 4rem 15rem 5rem 15rem;
+  margin: 4rem 17rem 5rem 10rem;
 }
 .user {
   display: block;
@@ -416,10 +424,18 @@ tr {
 }
 .admin-login h2 {
   color: var(--primary-color);
-  margin-left: 8rem;
+  margin-left: 12rem;
   font-size: 2rem;
 
 }
+select {
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  width: 18rem;
+  height: 2rem;
+  margin-right: 0rem;
+}
+
 input{
   width:6
 }
@@ -699,16 +715,17 @@ footer {
     place-content: space-between;
    
   }
+  
   .right {
     display: flex;
     place-content: space-between;
     list-style-type: none;
-    margin-left: 12rem;
+    margin-left: 9rem;
     margin-top: 1.2rem;
   }
   .top .right a {
     color: black;
-    margin: 1em;
+    margin: 1em 0.5rem;
   }
   .right li a:hover {
     font-weight: bolder;

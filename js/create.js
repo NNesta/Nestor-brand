@@ -6,18 +6,28 @@ console.log(token);
 const now = new Date();
 const mainLogin = document.getElementById("main-login")
 const mainLogout = document.getElementById("main-logout")
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  sessionStorage.clear()
 }
+if(sessionStorage.name){
 
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
+}
 const createForm = document.getElementById("create-form");
 
 
@@ -49,7 +59,7 @@ const storeArticle = async (title, picture, articleDetail, tag) => {
   };
   console.log(article)
 
-  const response = await fetch("https://nestor-portifolio-api.herokuapp.com/api/article", {
+  const response = await fetch("http://127.0.0.1:3000/api/article", {
     method: "POST",
     headers: {
       "Content-Type": "application/json ",

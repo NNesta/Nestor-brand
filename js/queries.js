@@ -3,20 +3,30 @@ const token = sessionStorage.token;
 
 const mainLogin = document.getElementById("main-login")
 const mainLogout = document.getElementById("main-logout")
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  sessionStorage.clear()
 }
+if(sessionStorage.name){
 
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
+}
 const queryPopulate = async () => {
-  const getQueryResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/message",{
+  const getQueryResponse = await fetch("http://127.0.0.1:3000/api/message",{
     method: "GET",
     headers:{
       "accept":"application/json",

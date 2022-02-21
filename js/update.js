@@ -5,16 +5,27 @@ const token = sessionStorage.token;
 let picture = "";
 const mainLogin = document.getElementById("main-login")
 const mainLogout = document.getElementById("main-logout")
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  sessionStorage.clear()
+}
+if(sessionStorage.name){
+
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
 }
 
 updateForm["picture"].addEventListener("change", function () {
@@ -42,7 +53,7 @@ updateForm.addEventListener("submit", (e) => {
 
 
 const update = async (index) =>{
-  const articleResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`)
+  const articleResponse = await fetch(`http://127.0.0.1:3000/api/article/${index}`)
   const articleArray = await articleResponse.json()
   articleTitle.value = articleArray.title;
   articleArticle.value = articleArray.articleDetail;
@@ -60,7 +71,7 @@ const storeArticle = async (title, picture, articleDetail, tag) =>{
    
   };
   try{
-  const response = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`, {
+  const response = await fetch(`http://127.0.0.1:3000/api/article/${index}`, {
     method: "PATCH",
     body: JSON.stringify(article),
     headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },

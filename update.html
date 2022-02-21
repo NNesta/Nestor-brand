@@ -49,8 +49,12 @@
         <li id="main-login">
           <a href="login.html">Login</a>
         </li>
+        
         <li id="main-logout">
           <a href="login.html">Logout</a>
+        </li>
+        <li id="names">
+          <a id="usersignup"></a>
         </li>
         
       </ul>
@@ -60,7 +64,7 @@
       
         <h2>UPDATE ARTICLE</h2>
         <div class="article-components">
-            <form id="update-form" action="dashboard.html" method="get">
+            <form id="update-form" action="dashboard.html" enctype="multipart/form-data" method="POST">
             <div class="article-title component">
                 <label>Title:</label>
                 <input type="text" name="title" id="title" value="">

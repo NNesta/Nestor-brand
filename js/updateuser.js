@@ -4,20 +4,31 @@ const index = url.split("=")[1];
 const token = sessionStorage.token;
 const mainLogin = document.getElementById("main-login")
 const mainLogout = document.getElementById("main-logout")
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  sessionStorage.clear()
+}
+if(sessionStorage.name){
+
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
 }
 
 const update = async (index)=>{
-const getUserResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/user/${index}`,{
+const getUserResponse = await fetch(`http://127.0.0.1:3000/api/user/${index}`,{
   method: "GET",
   headers:{
     "accept":"application/json",
@@ -41,33 +52,9 @@ const inputFirstName = signUpForm["user-firstname"];
   
   update(index);
 signUpForm.addEventListener("submit", (e) => {
-  
-  if(!checkCredential()){
-    e.preventDefault()
-  }
+  e.preventDefault()
+  checkCredential()
 });
-
-
- 
-const storeUser = async (firstName,secondName,email, password) => {
-  let userDetails = {
-    "firstname":firstName,
-    "secondname":secondName,
-    "email":email,
-    "password": password,
-    "longitude":userLongitude,
-    "latitude":userLatitude
-  };
-  
-const patchUserResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/user",{
-  method: "PATCH",
-  headers:{
-    "accept":"application/json",
-    "Authorization": `Bearer ${token}`
-  }
-})
-console.log(patchUserResponse)
-}
 
 function checkCredential() {
   
@@ -127,6 +114,7 @@ function checkCredential() {
       inputSecondName.value.trim(),
       inputEmail.value.trim(),
       inputPswd.value.trim(),
+      
     );
 
     return isValid;
@@ -138,6 +126,7 @@ navigator.geolocation.getCurrentPosition(showPosition,showError)
 function showPosition(position){
   userLatitude = position.coords.latitude;
   userLongitude = position.coords.longitude;
+ 
 }
 function showError(){
   console.log("this browser doesnot dupport geolocation");
@@ -145,3 +134,30 @@ function showError(){
 // This function store the filled element into localstorage if all element have valid input
 
 // This function validate form and call the store function then return true if all element have valid input
+const storeUser = async (firstName,secondName,email, password) => {
+  let userDetails = {
+    "firstname":firstName,
+    "secondname":secondName,
+    "email":email,
+    "password": password,
+    "longitude":userLongitude,
+    "latitude":userLatitude
+  };
+  
+const patchUserResponse = await fetch(`http://127.0.0.1:3000/api/user/${index}`,{
+  method: "PATCH",
+  body: JSON.stringify(userDetails),
+  headers:{
+    "accept":"application/json",
+    "Authorization": `Bearer ${token}`
+  }
+})
+if(patchUserResponse.status == 200){
+  sessionStorage.clear()
+  window.location.href = "login.html"
+}
+else{
+  window.location.href = "."
+}
+console.log(patchUserResponse)
+}

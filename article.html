@@ -56,11 +56,16 @@
             <a href="blog.html">Blog</a>
           </li>
           <li id="main-login">
-              <a href="login.html">Login</a>
-            </li>
-            <li id="main-logout">
-              <a href="login.html">Logout</a>
-            </li>
+            <a href="login.html">Login</a>
+          </li>
+          
+          <li id="main-logout">
+            <a href="login.html">Logout</a>
+          </li>
+          <li id="names">
+            <a id="usersignup"></a>
+          </li>
+        </ul>
         </ul>
       </div>
     </nav>
@@ -74,7 +79,7 @@
         <span id="icon"><i class="far fa-thumbs-up"></i></span>
         <span id="count">0</span> Like
       </button>
-      <div class="comment-section">
+      <div class="comment-section"><div id="comment-sect">
         <div class="your-comment">
           <h2>Your comment</h2>
           <form id="form-contact" action="./blog.html" method="GET">
@@ -88,7 +93,8 @@
             </div>
             <input type="submit" value="Comment" />
           </form>
-        </div>
+        </div></div>
+        <div id="prompt-login"> <h4>Please <a href="login.html">Login</a> to like and comment the article</h4></div>
         <div class="others-comment"></div>
       </div>
     </div>

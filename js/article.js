@@ -3,47 +3,69 @@ const token = sessionStorage.token;
 const commentForm = document.getElementById("form-contact");
 const url = window.location.href;
 const index = url.split("=")[1];
+const commentSect = document.getElementById("comment-sect")
+const promptLogin = document.getElementById("prompt-login")
+if(!sessionStorage.token){
+  commentSect.hidden = true;
+  promptLogin.hidden = false;
+}else{
+  commentSect.hidden = false;
+  promptLogin.hidden = true;
+}
 
-const mainLogin = document.getElementById("main-login")
-const mainLogout = document.getElementById("main-logout")
+const mainLogin = document.getElementById("main-login");
+const mainLogout = document.getElementById("main-logout");
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  sessionStorage.clear()
 }
+if(sessionStorage.name){
 
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
+}
 
 let articleComments = "";
 console.log(index);
 // const articles = JSON.parse(localStorage.articles);
-const getArticle = async ()=>{
-const articleResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/${index}`)
-const commentsResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/comments/`)
-const articleData = await articleResponse.json();
-const comments = await commentsResponse.json();
+const getArticle = async () => {
+  const articleResponse = await fetch(
+    `http://127.0.0.1:3000/api/article/${index}`
+  );
+  const commentsResponse = await fetch(`http://127.0.0.1:3000/api/comment/${index}`);
+  const articleData = await articleResponse.json();
+  const articleComments = await commentsResponse.json();
 
-  console.log(articleData)
-const articleDetail = document.querySelector(".article-detail1");
-const mainImage = document.createElement("img");
-mainImage.src = articleData.picture;
-mainImage.className = "article-img-main";
-const title = document.createElement("h3");
-title.innerText = articleData.title;
-const body = document.createElement("p");
-body.innerText = articleData.articleDetail;
-articleDetail.appendChild(mainImage);
-articleDetail.appendChild(title);
-articleDetail.appendChild(body);
-  const articleComments = comments.filter(commentObj=>commentObj.articleId === index);
+  console.log(articleData);
+  const articleDetail = document.querySelector(".article-detail1");
+  const mainImage = document.createElement("img");
+  mainImage.src = articleData.picture;
+  mainImage.className = "article-img-main";
+  const title = document.createElement("h3");
+  title.innerText = articleData.title;
+  const body = document.createElement("p");
+  body.innerText = articleData.articleDetail;
+  articleDetail.appendChild(mainImage);
+  articleDetail.appendChild(title);
+  articleDetail.appendChild(body);
+  
+  console.log(articleComments)
   const allComment = document.querySelector(".others-comment");
   const head1 = document.createElement("h2");
-  
+
   head1.innerText = "What others are saying about this article";
   allComment.appendChild(head1);
   for (let i = 0; i < articleComments.length; i++) {
@@ -60,11 +82,10 @@ articleDetail.appendChild(body);
     commentSection.appendChild(date);
     commentSection.appendChild(commentaire);
     allComment.appendChild(commentSection);
-  };
-  
-}
+  }
+};
 
-getArticle()
+getArticle();
 // const article = articles[index];
 commentForm.addEventListener("submit", (e) => {
   if (!checkComment(commentForm)) {
@@ -73,53 +94,75 @@ commentForm.addEventListener("submit", (e) => {
 });
 
 const likeBtn = document.querySelector(".like__btn");
-let likeIcon = document.querySelector("#icon"),
-  count = document.querySelector("#count");
+let likeIcon = document.querySelector("#icon");
 
-let clicked = false;
+let click = async () => {
+  const likeResponse = await fetch(
+    `http://127.0.0.1:3000/api/like/${index}/${sessionStorage.userId}`,
+    {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    }
+  );
+  const likesResponses = await fetch(
+    `http://127.0.0.1:3000/api/like/${index}`,
+    {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    }
+  );
+  const like = await likeResponse.json();
+  const allLikes = await likesResponses.json();
+  const numberOfLikes = allLikes.length;
 
-likeBtn.addEventListener("click", () => {
-  if (!clicked) {
-    clicked = true;
+  count.textContent = numberOfLikes;
+  if (!like.liked) {
     likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
-    count.textContent++;
-    storeLike()
+    
   } else {
-    clicked = false;
-    likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
-    count.textContent--;
-    deleteLike()
+    likeIcon.innerHTML = `<i class="fas fa-thumbs-down"></i>`
   }
-});
-let deleteIndex = ""
-function storeLike(){
-  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${index}`, {
+if(sessionStorage.token){
+  likeBtn.addEventListener("click", () => {
+    if (!like.liked) {
+      likeIcon.innerHTML = `<i class="fas fa-thumbs-down"></i>`;
+      storeLike();
+      like.liked = true;
+    } else {
+      likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
+      deleteLike();
+      like.liked = false;
+    }
+  });}
+
+};
+click();
+
+
+const storeLike = async () =>{
+  const response = await fetch(`http://127.0.0.1:3000/api/like/${index}`, {
     method: "POST",
-    body: JSON.stringify({ "likeType": 1 }),
-    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
+    body: JSON.stringify({ likeType: 1 }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
-  
 }
-const deleteLike = async ()=>{
-  const allLikes = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/`, {
-    method: "GET",
-    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
-  });
-  const getlike = await allLikes.json()
-  const likeId = ()=>{
-    for(let i in getlike){
-    if(getlike[i].articleId==index)
-    return getlike[i]._id}
-  }
-  console.log(likeId())
-  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${likeId()}`, {
-    method: "DELETE",
-    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
-  });
-  console.log(response)
-}
-
-
+const deleteLike = async() =>{
+  const response = await fetch(
+    `http://127.0.0.1:3000/api/like/${index}/${sessionStorage.userId}`,
+    {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+  console.log(response);
+};
 
 function checkComment(form) {
   const inputMessage = form["message"];
@@ -128,18 +171,20 @@ function checkComment(form) {
     getErrorMessage(inputMessage, "Put Message");
     return false;
   } else {
-    getSuccessMessage(inputMessage, "Very good");
+    getSuccessMessage(inputMessage, "");
     storeComment(inputMessage.value.trim());
     return true;
   }
 }
 
 const storeComment = async (message) => {
-  const response = fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${index}`, {
+  const response = fetch(`http://127.0.0.1:3000/api/comment/${index}`, {
     method: "POST",
-    body: JSON.stringify({ "comment": message }),
-    headers: { 'Content-Type': 'application/json',"Authorization":`Bearer ${token}`  },
+    body: JSON.stringify({ comment: message }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
-  console.log(response)
-}
-
+  console.log(response);
+};

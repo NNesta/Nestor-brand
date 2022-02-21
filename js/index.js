@@ -9,18 +9,28 @@ const mobileBtnExit = document.getElementById("exit");
 const formContact = document.getElementById("form-contact");
 const mainLogin = document.getElementById("main-login")
 const mainLogout = document.getElementById("main-logout")
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  sessionStorage.clear()
 }
+if(sessionStorage.name){
 
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
+}
 mobileBtn.addEventListener("click", () => {
   nav.classList.add("menu-btn");
 });
@@ -36,7 +46,7 @@ const storeQueries = async (name,email,message) => {
   };
   console.log(messageDetail)
  
-  const postQueryResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/message", {
+  const postQueryResponse = await fetch("http://127.0.0.1:3000/api/message", {
     method: "POST",
     body: JSON.stringify(messageDetail),
     headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },

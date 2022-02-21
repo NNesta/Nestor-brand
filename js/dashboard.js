@@ -1,12 +1,14 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
-
+const url = window.location.href;
+const index = url.split("=")[1];
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
 const getArticles = async ()=>{
- const articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
+ const articlesResponse =  await fetch('http://127.0.0.1:3000/api/article')
   const articlesRes = await articlesResponse.json()
-  console.log(articlesRes.filter);
-  articlePopulate(articlesRes);
+  const authorArticles =index ? articlesRes.filter(article =>{return article.author.id == index}):articlesRes
+  console.log(authorArticles);
+  articlePopulate(authorArticles);
 }
 const logoutb = document.getElementById("logout-button")
 logoutb.onclick = ()=>{

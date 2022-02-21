@@ -2,20 +2,31 @@ import { getErrorMessage, getSuccessMessage } from "./main.js";
 const token = sessionStorage.token
 const mainLogin = document.getElementById("main-login")
 const mainLogout = document.getElementById("main-logout")
+const nameSect = document.getElementById("names")
+
 if(sessionStorage.token){
   mainLogin.hidden = true
   mainLogout.hidden = false;
+  nameSect.hidden = false;
 }
 else{
   mainLogin.hidden = false
   mainLogout.hidden = true;
+  nameSect.hidden = true
 }
 mainLogout.onclick = ()=>{
-  sessionStorage.token = ""
+  sessionStorage.clear()
+}
+if(sessionStorage.name){
+
+const name = sessionStorage.name.split(" ")[0];
+const updateUserLink = document.getElementById("usersignup");
+updateUserLink.href = `./updateuser.html/${sessionStorage.userId}`
+updateUserLink.innerHTML = `Hello ${name}`;
 }
 
 const userPopulate = async () => {
-  const userResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/user", {
+  const userResponse = await fetch("http://127.0.0.1:3000/api/user", {
 method:"GET",
 headers:{"accept":"application/json", "Authorization": `Bearer ${token}`}
   });
@@ -32,10 +43,10 @@ headers:{"accept":"application/json", "Authorization": `Bearer ${token}`}
   heading_3.innerHTML = "Email";
   let heading_4 = document.createElement("th");
   heading_4.innerHTML = "Password";
-  // let heading_5 = document.createElement("th");
-  // heading_5.innerHTML = "Longitude";
-  // let heading_6 = document.createElement("th");
-  // heading_6.innerHTML = "Latitude";
+  let heading_5 = document.createElement("th");
+  heading_5.innerHTML = "Longitude";
+  let heading_6 = document.createElement("th");
+  heading_6.innerHTML = "User status";
   let heading_7 = document.createElement("th");
   heading_7.innerHTML = "";
   let row_1 = document.createElement("tr");
@@ -44,8 +55,8 @@ headers:{"accept":"application/json", "Authorization": `Bearer ${token}`}
   row_1.appendChild(heading_2);
   row_1.appendChild(heading_3);
   row_1.appendChild(heading_4);
-  // row_1.appendChild(heading_5);
-  // row_1.appendChild(heading_6);
+  row_1.appendChild(heading_5);
+  row_1.appendChild(heading_6);
   row_1.appendChild(heading_7);
 
   thead.appendChild(row_1);
@@ -65,10 +76,23 @@ headers:{"accept":"application/json", "Authorization": `Bearer ${token}`}
     data_3.innerHTML = userArray[i].email;
     let data_4 = document.createElement("td");
     data_4.innerHTML = userArray[i].password.slice(0,10);
-    // let data_5 = document.createElement("td");
-    // data_5.innerHTML = userArray[i].location.longitude;
-    // let data_6 = document.createElement("td");
-    // data_6.innerHTML = userArray[i].location.latitude;
+    let data_5 = document.createElement("td");
+    const latitude = userArray[i].location? userArray[i].location.latitude: "NAN" ;
+    const longitude = userArray[i].location? userArray[i].location.longitude: "NAN" ;
+    data_5.innerHTML = `(${latitude}, ${longitude})`;
+    let data_6 = document.createElement("td");
+    const statusWord = statusNumber => {
+      if(userArray[i].userStatus ==0){
+        return "User";
+      }
+      if(userArray[i].userStatus ==1){
+        return "Author";
+      }
+      if(userArray[i].userStatus == 2){
+        return "Admin"
+      }
+    };
+    data_6.innerHTML = statusWord(userArray[i].userStatus);
     let deleteLink = document.createElement("a");
     let updateLink = document.createElement("a");
     let buttonSection = document.createElement("div");
@@ -85,13 +109,13 @@ headers:{"accept":"application/json", "Authorization": `Bearer ${token}`}
     deleteButton.className = "article-delete"
     updateButton.className = "article-update"
     deleteLink.href = `delete.html?entity=user&index=${userArray[i]._id}`;
-    updateLink.href = `updateuser.html?index=${userArray[i]._id}`;
+    updateLink.href = `assignStatus.html?index=${userArray[i]._id}`;
     row_2.appendChild(data_1);
     row_2.appendChild(data_2);
     row_2.appendChild(data_3);
     row_2.appendChild(data_4);
-    // row_2.appendChild(data_5);
-    // row_2.appendChild(data_6);
+    row_2.appendChild(data_5);
+    row_2.appendChild(data_6);
     row_2.appendChild(buttonSection);
     // row_2.appendChild(deleteLink);
     tbody.appendChild(row_2);
