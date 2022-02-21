@@ -352,7 +352,7 @@ button {
 
 }
 .article {
-  margin: 0;
+  margin: 0 1.5rem;
 }
 .article p {
   color:black

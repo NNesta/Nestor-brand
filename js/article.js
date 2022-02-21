@@ -5,6 +5,9 @@ const url = window.location.href;
 const index = url.split("=")[1];
 const commentSect = document.getElementById("comment-sect")
 const promptLogin = document.getElementById("prompt-login")
+const mainLogin = document.getElementById("main-login")
+    const mainLogout = document.getElementById("main-logout")
+    const nameSect = document.getElementById("names")
 if(!sessionStorage.token){
   commentSect.hidden = true;
   promptLogin.hidden = false;
@@ -13,7 +16,6 @@ if(!sessionStorage.token){
   promptLogin.hidden = true;
 }
 
-const nameSect = document.getElementById("names")
 
 if(sessionStorage.token){
   mainLogin.hidden = true
