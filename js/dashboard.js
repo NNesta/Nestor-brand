@@ -1,5 +1,6 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 const url = window.location.href;
+search = url.split("=")[1];
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
 
@@ -30,7 +31,6 @@ const articlePopulate = async (articlesArray) => {
     let img2 = document.createElement("i");
     let span1 = document.createElement("span");
     let span2 = document.createElement("span");
- console.log(articlesArray[i])
     title.innerText = articlesArray[i].title;
     article.innerText = articlesArray[i].articleDetail.slice(0,70);
     created.innerText = "Created: "+articlesArray[i].created;
@@ -54,10 +54,6 @@ const articlePopulate = async (articlesArray) => {
     updateLink.appendChild(updateButton);
     deleteLink.href = `delete.html?entity=article&index=${articlesArray[i]._id}`;
     updateLink.href = `update.html?index=${articlesArray[i]._id}`;
-    
-    
-    span1.innerText = 1;
-    span2.innerText = 0;
     bottomPart.className = "article-bottom"
     deleteButton.className = "article-delete"
     updateButton.className = "article-update"
@@ -81,7 +77,12 @@ const articlePopulate = async (articlesArray) => {
 }
 
 const getArticles = async ()=>{
- const articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
+  let articlesResponse = {};
+  if(search){
+ articlesResponse =  await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/search/${search}`)}
+ else{
+  articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
+ }
   const articlesRes = await articlesResponse.json()
   let authorArticles = {}
   if(sessionStorage.userStatus == 2){
