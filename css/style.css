@@ -284,13 +284,11 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 label {
   display: block;
   font-size: 1.2em;
-  margin: 0.5rem 0;
   color: black;
 }
  input, textarea {
   width: 80%;
   padding: 0.8em;
-  margin-bottom: 1em;
   border-radius: 0.3em;
   border: 1px solid gray;
   box-sizing: border-box ;
