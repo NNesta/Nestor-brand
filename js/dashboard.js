@@ -3,7 +3,7 @@ const url = window.location.href;
 search = url.split("=")[1];
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
-
+const numberOfArticle = document.getElementById("created-article");
 
 
 const articlePopulate = async (articlesArray) => {
@@ -84,6 +84,7 @@ const getArticles = async ()=>{
   articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
  }
   const articlesRes = await articlesResponse.json()
+  numberOfArticle.innerHTML = articlesRes.length;
   let authorArticles = {}
   if(sessionStorage.userStatus == 2){
   authorArticles = articlesRes.filter(article =>{return article.author.id == sessionStorage.userId})}
