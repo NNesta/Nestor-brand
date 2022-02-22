@@ -5,13 +5,16 @@ const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
 const numberOfArticle = document.getElementById("created-article");
 
-
 const articlePopulate = async (articlesArray) => {
   const articleContainer = document.querySelector(".article-modify");
-  
+
   for (let i = 0; i < articlesArray.length; i++) {
-    const commentsResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/comment/${articlesArray[i]._id}`);
-    const likeResponse = await fetch(`https://nestor-portifolio-api.herokuapp.com/api/like/${articlesArray[i]._id}`);
+    const commentsResponse = await fetch(
+      `https://nestor-portifolio-api.herokuapp.com/api/comment/${articlesArray[i]._id}`
+    );
+    const likeResponse = await fetch(
+      `https://nestor-portifolio-api.herokuapp.com/api/like/${articlesArray[i]._id}`
+    );
     const likes = await likeResponse.json();
     const numberOfLikes = likes.length;
     const articleComments = await commentsResponse.json();
@@ -23,8 +26,8 @@ const articlePopulate = async (articlesArray) => {
     let updated = document.createElement("span");
     let article = document.createElement("p");
     let bottomPart = document.createElement("div");
-    let updateButton = document.createElement("button")
-    let deleteButton = document.createElement("button")
+    let updateButton = document.createElement("button");
+    let deleteButton = document.createElement("button");
     let deleteLink = document.createElement("a");
     let updateLink = document.createElement("a");
     let img1 = document.createElement("i");
@@ -32,9 +35,9 @@ const articlePopulate = async (articlesArray) => {
     let span1 = document.createElement("span");
     let span2 = document.createElement("span");
     title.innerText = articlesArray[i].title;
-    article.innerText = articlesArray[i].articleDetail.slice(0,70);
-    created.innerText = "Created: "+articlesArray[i].created;
-    updated.innerText = "        Last updated: "+articlesArray[i].created;
+    article.innerText = articlesArray[i].articleDetail.slice(0, 70);
+    created.innerText = "Created: " + articlesArray[i].created;
+    updated.innerText = "        Last updated: " + articlesArray[i].created;
 
     // img1.src = "img/view.png";
     title.className = "article-title";
@@ -47,16 +50,15 @@ const articlePopulate = async (articlesArray) => {
     span1.innerText = numberOfLikes;
     span2.innerText = numberOfComments;
 
-
     updateButton.innerText = "Update";
-    deleteButton.innerText ="Delete";
+    deleteButton.innerText = "Delete";
     deleteLink.appendChild(deleteButton);
     updateLink.appendChild(updateButton);
     deleteLink.href = `delete.html?entity=article&index=${articlesArray[i]._id}`;
     updateLink.href = `update.html?index=${articlesArray[i]._id}`;
-    bottomPart.className = "article-bottom"
-    deleteButton.className = "article-delete"
-    updateButton.className = "article-update"
+    bottomPart.className = "article-bottom";
+    deleteButton.className = "article-delete";
+    updateButton.className = "article-update";
     link.appendChild(title);
 
     bottomPart.appendChild(img1);
@@ -72,47 +74,51 @@ const articlePopulate = async (articlesArray) => {
     singleArticle.appendChild(article);
     singleArticle.appendChild(bottomPart);
     articleContainer.appendChild(singleArticle);
- 
   }
-}
+};
 
-const getArticles = async ()=>{
+const getArticles = async () => {
   let articlesResponse = {};
-  if(search){
- articlesResponse =  await fetch(`https://nestor-portifolio-api.herokuapp.com/api/article/search/${search}`)}
- else{
-  articlesResponse =  await fetch('https://nestor-portifolio-api.herokuapp.com/api/article')
- }
-  const articlesRes = await articlesResponse.json()
-  numberOfArticle.innerHTML = articlesRes.length;
-  let authorArticles = {}
-  if(sessionStorage.userStatus == 2){
-  authorArticles = articlesRes.filter(article =>{return article.author.id == sessionStorage.userId})}
-  if(sessionStorage.userStatus == 3){
-    authorArticles = articlesRes;
-  }else{
-    window.location.href = "."
+  if (search) {
+    articlesResponse = await fetch(
+      `https://nestor-portifolio-api.herokuapp.com/api/article/search/${search}`
+    );
+  } else {
+    articlesResponse = await fetch(
+      "https://nestor-portifolio-api.herokuapp.com/api/article"
+    );
   }
- 
+  const articlesRes = await articlesResponse.json();
+  numberOfArticle.innerHTML = articlesRes.length;
+  let authorArticles = {};
+  if (sessionStorage.userStatus == 1) {
+    window.location.href = ".";
+  }
+  if (sessionStorage.userStatus == 2) {
+    authorArticles = articlesRes.filter((article) => {
+      return article.author.id == sessionStorage.userId;
+    });
+  }
+  if (sessionStorage.userStatus == 3) {
+    authorArticles = articlesRes;
+  }
+  
+
   articlePopulate(authorArticles);
-}
-const logoutb = document.getElementById("logout-button")
-logoutb.onclick = ()=>{
-  sessionStorage.token = ""
-  window.location.href = "."
-}
+};
+const logoutb = document.getElementById("logout-button");
+logoutb.onclick = () => {
+  sessionStorage.token = "";
+  window.location.href = ".";
+};
 
 searchButton.addEventListener("click", () => {
   if (!searchInput.value.trim()) {
     getErrorMessage(searchButton.parentElement, "Put valid search");
   } else {
     getSuccessMessage(searchButton.parentElement, "Very good");
-    window.location.href = `./dashboard.html?search=${searchInput.value.trim()}`
+    window.location.href = `./dashboard.html?search=${searchInput.value.trim()}`;
   }
 });
 
-getArticles()
-
-
-
-
+getArticles();
