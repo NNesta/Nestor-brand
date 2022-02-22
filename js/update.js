@@ -75,13 +75,15 @@ const storeArticle = async (title, picture, articleDetail, tag) =>{
     body: JSON.stringify(article),
     headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },
   });
-  console.log(response)}
-  catch(error){
-    console.log(error)
-  }
+  console.log(response);
   if(response.status == 200){
     window.location.href = "./dashboard.html"
   }
+}
+  catch(error){
+    console.log(error)
+  }
+  
 
 }
 
