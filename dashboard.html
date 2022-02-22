@@ -13,53 +13,13 @@
   <body>
     <div class="dashboard">
       <nav class="navbar">
-        <div class="logo">
-          <span class="n">NN</span> <span class="left">ESTA</span>
-        </div>
-        <img
-          id="menu"
-          class="navbar-menu"
-          src="img/menu.svg"
-          alt="menu picture"
-        />
+        
+        <button onclick="location.href='create.html'" type="button" class="article-create-button"> Create new article</button>
+        <h3>Article created: <span id="created-article"></span></h3>
 
-        <div class="top">
-          <img
-            id="exit"
-            class="mobile-exit"
-            src="img/exit.svg"
-            alt="exit menu"
-            class="menu-close"
-          />
-
-          <ul class="right">
-            <li>
-              <a href=".">Home</a>
-            </li>
-
-            <li>
-              <a >Article created:</a>
-            </li>
-            <li>
-              <a id="created-article"></a>
-            </li>
-            
-
-            <li>
-              <a href="blog.html">Blog</a>
-            </li>
-            <li id="main-login">
-              <a href="login.html">Login</a>
-            </li>
-            
-            <li id="main-logout">
-              <a href="login.html">Logout</a>
-            </li>
-            <li id="names">
-              <a id="usersignup"></a>
-            </li>
-          </ul>
-        </div>
+      <h3 class="views"><a href=".">Home</a></h3>
+      <button type="button" class="logout" id="logout-button">Log Out</button>
+      
       </nav>
       <div class="article-section">
         

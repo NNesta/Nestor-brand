@@ -1,6 +1,6 @@
 import { getErrorMessage, getSuccessMessage } from "./main.js";
 const url = window.location.href;
-search = url.split("=")[1];
+const search = url.split("=")[1];
 const searchButton = document.getElementById("search-btn");
 const searchInput = document.getElementById("srchinput");
 const numberOfArticle = document.getElementById("created-article");
@@ -107,6 +107,7 @@ searchButton.addEventListener("click", () => {
     getErrorMessage(searchButton.parentElement, "Put valid search");
   } else {
     getSuccessMessage(searchButton.parentElement, "Very good");
+    window.location.href = `./dashboard.html?search=${searchInput.value.trim()}`
   }
 });
 
