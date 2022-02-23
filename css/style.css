@@ -452,9 +452,10 @@ input{
   padding: 0 0 6rem 0 ;
 }
 .psw,.email-user, .user-secondname, .user-firstname {
-  margin-left: 2rem;
+  margin-left: auto;
   width: 18rem;
   border-radius: 5rem;
+  margin-bottom: 1rem;
   
 }
 .psw-login,.email-user-login {
