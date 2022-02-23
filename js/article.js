@@ -130,10 +130,12 @@ if(sessionStorage.token){
   likeBtn.addEventListener("click", () => {
     if (!like.liked) {
       likeIcon.innerHTML = `<i class="fas fa-thumbs-down"></i>`;
+      count.textContent = numberOfLikes+1;
       storeLike();
       like.liked = true;
     } else {
       likeIcon.innerHTML = `<i class="fas fa-thumbs-up"></i>`;
+      count.textContent = numberOfLikes-1;
       deleteLike();
       like.liked = false;
     }
