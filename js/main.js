@@ -13,7 +13,5 @@ function getErrorMessage(input, errormessage) {
 function getSuccessMessage(input, successMessage) {
   input.parentElement.classList.remove("fail");
   input.parentElement.classList.add("success");
-
-  const small = input.parentElement.querySelector("small");
-  small.innerText = "";
+  
 }
