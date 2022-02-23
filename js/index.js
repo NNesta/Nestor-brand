@@ -46,18 +46,26 @@ const storeQueries = async (name,email,message) => {
     "message":message
   };
   console.log(messageDetail)
+  try{
  
   const postQueryResponse = await fetch("https://nestor-portifolio-api.herokuapp.com/api/message", {
     method: "POST",
     body: JSON.stringify(messageDetail),
-    headers: { "Content-Type": "application/json","Authorization":`Bearer ${token}` },
+    headers: { "Content-Type": "application/json" },
   })
   console.log(postQueryResponse)
+  if(postQueryResponse.status == 200){
+   window.location.href = "."
+  }
+}catch(error){
+  console.log(error);
+}
 }
 formContact.addEventListener("submit", (e) => {
-  if(!checkContactInput(formContact)){
-    e.preventDefault();   
-  }
+  e.preventDefault();  
+  checkContactInput(formContact)
+     
+  
 });
 
 function checkContactInput(form) {
@@ -86,10 +94,7 @@ isValid = inputName.value.trim() && inputEmail.value.trim() && inputMessage.valu
 
 if(isValid == true){
   storeQueries(inputName.value.trim(),inputEmail.value.trim(),inputMessage.value.trim())
-  return true;
+  
 }
- else{
-   return false;
-  }
 
 }

@@ -438,7 +438,7 @@ input{
   width:6
 }
 .btn-update-create{
-  margin-left: 8rem;
+  margin-left: 20rem;
   width: 50rem !important;
 }
 
@@ -586,7 +586,8 @@ a{
 }
 .component textarea,
 .component input {
-  margin-right: 2rem;
+  margin: 0.5rem 0rem;
+  margin-left: 2rem;
 }
 .create-button {
   margin: 2rem 0 0 56rem;
